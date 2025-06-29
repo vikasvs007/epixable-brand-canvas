@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Sparkles } from 'lucide-react';
@@ -37,15 +36,96 @@ const Header = () => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
+            {/* Logo Video */}
+            <video
+              src="/Logo - VertexLabs.jpg"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="h-12 w-12 object-contain rounded"
+              style={{ background: 'transparent' }}
+            />
+            {/* Name with styled x */}
             <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 animate-glow">
-                <Sparkles className="text-white w-6 h-6" />
+              <span className="flex items-center space-x-0.5 text-3xl font-montserrat font-bold text-white">
+                <span>V E R T E</span>
+                <span className="relative inline-block w-7 h-7 align-middle mx-1">
+                  {/* Orange diamond */}
+                  <span className="absolute inset-0 flex items-center justify-center">
+                    <span className="block w-5 h-5 bg-orange-600 rotate-45 rounded-sm"></span>
+                  </span>
+                  {/* Unique X */}
+                  <span className="absolute inset-0 flex items-center justify-center">
+                    <span
+                      className="text-white text-5xl font-playfair font-extrabold drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)]"
+                      style={{
+                        fontFamily: "'Playfair Display', serif",
+                        transform: 'rotate(-8deg) skewY(4deg)',
+                        letterSpacing: '-0.1em',
+                      }}
+                    >
+                      x
+                    </span>
+                  </span>
+                </span>
+                <span>L A B S</span>
+              </span>
+              
+              {/* Text shadow effect */}
+              <div className="absolute inset-0 flex items-center space-x-0.5 text-3xl font-montserrat font-bold text-orange-500/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                <span>V E R T E</span>
+                <span className="relative inline-block w-7 h-7 align-middle mx-1">
+                  <span className="absolute inset-0 flex items-center justify-center">
+                    <span className="block w-5 h-5 bg-orange-600 rotate-45 rounded-sm"></span>
+                  </span>
+                  <span className="absolute inset-0 flex items-center justify-center">
+                    <span
+                      className="text-orange-500 text-5xl font-playfair font-extrabold opacity-60"
+                      style={{
+                        fontFamily: "'Playfair Display', serif",
+                        transform: 'rotate(-8deg) skewY(4deg)',
+                        letterSpacing: '-0.1em',
+                      }}
+                    >
+                      x
+                    </span>
+                  </span>
+                </span>
+                <span>L A B S</span>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
+              
+              {/* Glitch effect overlay */}
+              <div className="absolute inset-0 flex items-center space-x-0.5 text-3xl font-montserrat font-bold text-orange-400/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{transform: 'translateX(1px)'}}>
+                <span>V E R T E</span>
+                <span className="relative inline-block w-7 h-7 align-middle mx-1">
+                  <span className="absolute inset-0 flex items-center justify-center">
+                    <span className="block w-5 h-5 bg-orange-400 rotate-45 rounded-sm"></span>
+                  </span>
+                  <span className="absolute inset-0 flex items-center justify-center">
+                    <span
+                      className="text-orange-400 text-5xl font-playfair font-extrabold opacity-60"
+                      style={{
+                        fontFamily: "'Playfair Display', serif",
+                        transform: 'rotate(-8deg) skewY(4deg)',
+                        letterSpacing: '-0.1em',
+                      }}
+                    >
+                      x
+                    </span>
+                  </span>
+                </span>
+                <span>L A B S</span>
+              </div>
+              
+              {/* Floating dots around text */}
+              <div className="absolute -top-1 -right-1 w-1 h-1 bg-orange-400 rounded-full animate-ping opacity-60"></div>
+              <div className="absolute -bottom-1 -left-1 w-1 h-1 bg-orange-300 rounded-full animate-ping opacity-60" style={{animationDelay: '1s'}}></div>
+              
+              {/* Decorative lines */}
+              <div className="absolute -top-2 left-0 w-8 h-0.5 bg-gradient-to-r from-transparent via-orange-400 to-transparent opacity-60"></div>
+              <div className="absolute -bottom-2 right-0 w-8 h-0.5 bg-gradient-to-r from-transparent via-orange-400 to-transparent opacity-60"></div>
             </div>
-            <span className="text-3xl font-bold text-gradient">
-              Epixable
-            </span>
           </Link>
 
           {/* Desktop Navigation */}

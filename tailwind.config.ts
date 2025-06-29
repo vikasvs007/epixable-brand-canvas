@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -23,6 +22,9 @@ const config: Config = {
         'inter': ['Inter', 'sans-serif'],
         'playfair': ['Playfair Display', 'serif'],
         'space': ['Space Grotesk', 'sans-serif'],
+        'alfa': ['Alfa Slab One', 'cursive'],
+        'marker': ['Permanent Marker', 'cursive'],
+        'montserrat': ['Montserrat', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -101,11 +101,7 @@ const Footer = () => {
             <p className="text-gray-400 text-center md:text-left">
               &copy; 2024 Epixable. All rights reserved.
             </p>
-            <div className="mt-4 md:mt-0">
-              <p className="text-gray-400 text-center md:text-right">
-                Made with <span className="text-orange-500">❤️</span> for amazing brands
-              </p>
-            </div>
+         
           </div>
         </div>
       </div>
