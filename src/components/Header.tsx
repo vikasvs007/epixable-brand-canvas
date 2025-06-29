@@ -35,19 +35,16 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
-            {/* Logo Video */}
-            <video
+          <Link to="/" className="flex items-center space-x-4 group">
+            {/* Logo Image - larger and circular */}
+            <img
               src="/Logo - VertexLabs.jpg"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="h-12 w-12 object-contain rounded"
+              alt="Vertex Labs Logo"
+              className="h-16 w-16 object-contain rounded-full border-2 border-orange-500 shadow-md"
               style={{ background: 'transparent' }}
             />
             {/* Name with styled x */}
-            <div className="relative">
+            <div className="relative flex items-center">
               <span className="flex items-center space-x-0.5 text-3xl font-montserrat font-bold text-white">
                 <span>V E R T E</span>
                 <span className="relative inline-block w-7 h-7 align-middle mx-1">

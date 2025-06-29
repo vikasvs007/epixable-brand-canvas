@@ -55,23 +55,23 @@ const About = () => {
               </div>
               
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                About <span className="text-gradient">Epixable ✨</span>
+                About <span className="text-gradient">VertexLabs ✨</span>
               </h1>
               
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                We are a full-service branding and marketing firm dedicated to crafting authentic brand experiences 
-                that resonate with audiences and drive meaningful growth.
+              We are a full-service digital agency focused on web development, AI/ML solutions, and creative design to help businesses grow and innovate.
               </p>
               
               <div className="space-y-4 text-gray-300">
                 <p>
-                  Over the past two years, we've experienced tremendous growth and progress, building lasting relationships 
-                  with clients across various industries. Our journey has been marked by continuous innovation, creative excellence, 
-                  and an unwavering commitment to delivering results.
+                Over the past two years, we've experienced tremendous growth and progress, building lasting relationships with clients across diverse industries. Our journey has been marked by continuous innovation, technical expertise, and an unwavering commitment to delivering impactful digital solutions.
+
+
                 </p>
                 <p>
-                  We believe in the power of authentic storytelling and strategic brand positioning to help visionary companies 
-                  elevate their brands and connect with their ideal customers.
+                We believe in the power of innovative technology, intelligent solutions, and creative design to help visionary companies grow, streamline their operations, and engage their audiences.
+
+
                 </p>
               </div>
             </div>
@@ -83,9 +83,9 @@ const About = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-lg text-gray-300 leading-relaxed">
-                    To empower businesses through exceptional branding and marketing strategies that create lasting impact 
-                    and drive sustainable growth.
-                  </p>
+                  To bridge the gap between ideas and impact by equipping businesses and students with the tools, knowledge, and support they need to turn ambition into achievement.
+
+</p>
                 </CardContent>
               </Card>
             </div>
@@ -148,7 +148,7 @@ const About = () => {
               <div>
                 <h3 className="text-3xl font-bold text-white mb-6">The Beginning</h3>
                 <p className="text-gray-300 mb-4 text-lg leading-relaxed">
-                  Epixable was founded with a simple yet powerful vision: to help businesses tell their stories 
+                  VertexLabs was founded with a simple yet powerful vision: to help businesses tell their stories 
                   in ways that truly connect with their audiences. We started as a small team of passionate 
                   creatives and strategists.
                 </p>
@@ -159,7 +159,7 @@ const About = () => {
               </div>
               <Card className="gradient-border bg-black/50 border-orange-500/20 backdrop-blur-xl card-hover">
                 <CardContent className="p-8 text-center">
-                  <div className="text-6xl font-bold text-gradient mb-4">2022</div>
+                  <div className="text-6xl font-bold text-gradient mb-4">2023</div>
                   <div className="text-gray-300 text-lg">Founded with big dreams</div>
                 </CardContent>
               </Card>
@@ -168,7 +168,7 @@ const About = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <Card className="md:order-1 gradient-border bg-black/50 border-orange-500/20 backdrop-blur-xl card-hover">
                 <CardContent className="p-8 text-center">
-                  <div className="text-6xl font-bold text-gradient mb-4">150+</div>
+                  <div className="text-6xl font-bold text-gradient mb-4">50+</div>
                   <div className="text-gray-300 text-lg">Happy clients served</div>
                 </CardContent>
               </Card>

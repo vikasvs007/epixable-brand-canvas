@@ -22,48 +22,52 @@ const Home = () => {
   }, []);
 
   const stats = [
-    { icon: Heart, label: 'Happy Clients', value: '150+', color: 'text-orange-500' },
-    { icon: Rocket, label: 'Projects Completed', value: '500+', color: 'text-orange-400' },
-    { icon: Trophy, label: 'Years Experience', value: '10+', color: 'text-orange-600' },
+    { icon: Heart, label: 'Happy Clients', value: '50+', color: 'text-orange-500' },
+    { icon: Rocket, label: 'Projects Completed', value: '30+', color: 'text-orange-400' },
+    { icon: Trophy, label: 'Years Experience', value: '5+', color: 'text-orange-600' },
     { icon: Target, label: 'Success Rate', value: '98%', color: 'text-orange-300' },
   ];
 
   const testimonials = [
     {
-      quote: "Epixable transformed our brand identity completely. Their creative approach and attention to detail exceeded our expectations.",
-      author: "Sarah Johnson",
-      company: "TechStart Inc.",
+      quote: "vertexlabs transformed our brand identity completely. Their creative approach and attention to detail exceeded our expectations.",
+      author: "Mounesh patter",
+      company: "ClickNgro.",
       rating: 5,
     },
     {
-      quote: "The team at Epixable delivered exceptional results for our marketing campaign. Professional, creative, and reliable.",
-      author: "Michael Chen",
-      company: "Global Innovations",
+      quote: "The team at vertexlabs delivered exceptional results for our marketing campaign. Professional, creative, and reliable.",
+      author: "Vinayak",
+      company: "Swansorter.",
       rating: 5,
     },
     {
       quote: "Outstanding work! They understood our vision perfectly and brought it to life with incredible precision.",
-      author: "Emma Davis",
-      company: "Creative Solutions",
+      author: "Mrs.Savitha ramesh",
+      company: "SCV Trust.",
       rating: 5,
     },
   ];
 
   const services = [
     {
-      title: 'Brand Strategy',
-      description: 'Comprehensive brand development and positioning strategies that resonate with your target audience and drive engagement.',
-      icon: Sparkles,
-      gradient: 'from-orange-500 to-orange-600',
-      delay: '0ms',
+  
+        title: 'Web Development',
+        description: 'End-to-end full-stack web development to build responsive, secure, and high-performance websites and applications.',
+        icon: Sparkles,
+        gradient: 'from-orange-500 to-orange-600',
+        delay: '0ms',
+      
+      
     },
     {
-      title: 'Digital Marketing',
-      description: 'SEO, Google Ads, and social media marketing campaigns that drive measurable results and ROI.',
+      title: 'AI & ML Solutions',
+      description: 'Custom AI and machine learning models that automate processes, uncover insights, and power intelligent applications.',
       icon: Zap,
-      gradient: 'from-orange-400 to-orange-500',
-      delay: '200ms',
+      gradient: 'from-purple-500 to-purple-600',
+      delay: '400ms',
     },
+    
     {
       title: 'Creative Design',
       description: 'Stunning visual designs that capture your brand essence and engage your customers effectively.',

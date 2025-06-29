@@ -13,10 +13,9 @@ const Footer = () => {
   ];
 
   const services = [
-    'Digital Marketing',
-    'Brand Strategy',
+    'AIML',
     'Graphic Design',
-    'SEO & Google Ads',
+    'Web Development',
     'Social Media',
   ];
 
@@ -32,34 +31,40 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center space-x-3 mb-6 group">
-              <div className="relative">
+            <Link to="/" className="flex items-center space-x-4 group">
+            {/* Logo Image - larger and circular */}
+            <img
+              src="/Logo - VertexLabs.jpg"
+              alt="Vertex Labs Logo"
+              className="h-16 w-16 object-contain rounded-full border-2 border-orange-500 shadow-md"
+              style={{ background: 'transparent' }}
+            />
+              {/* <div className="relative">
                 <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 animate-glow">
                   <Sparkles className="text-white w-6 h-6" />
                 </div>
-              </div>
+              </div> */}
               <span className="text-3xl font-bold text-gradient font-playfair">
-                Epixable
+                VertexLabs
               </span>
             </Link>
             
             <p className="text-gray-300 mb-6 max-w-md text-lg leading-relaxed">
-              Full-service branding and marketing firm dedicated to crafting authentic brand experiences 
-              and helping visionary companies elevate their brands.
+            We are a full-service firm specializing in full-stack web development, AI/ML solutions, and creative design.
             </p>
             
             <div className="space-y-3 text-gray-300">
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-orange-500" />
-                <span>hello@epixable.com</span>
+                <span>hello@vertexlabs.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-orange-500" />
-                <span>(555) 123-4567</span>
+                <span>+91 6363163519</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-orange-500" />
-                <span>New York, NY</span>
+                <span>Mysore,India</span>
               </div>
             </div>
           </div>
@@ -99,7 +104,7 @@ const Footer = () => {
         <div className="border-t border-orange-500/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-center md:text-left">
-              &copy; 2024 Epixable. All rights reserved.
+              &copy; 2025 VertexLabs. All rights reserved.
             </p>
          
           </div>
