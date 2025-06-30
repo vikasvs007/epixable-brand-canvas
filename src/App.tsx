@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -7,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Gallery from "./pages/Gallery";
+import OurWork from "./pages/OurWork";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -31,9 +30,9 @@ const App = () => (
               <About />
             </Layout>
           } />
-          <Route path="/gallery" element={
+          <Route path="/our-work" element={
             <Layout>
-              <Gallery />
+              <OurWork />
             </Layout>
           } />
           <Route path="/services" element={

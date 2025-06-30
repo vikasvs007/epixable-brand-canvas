@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight, CheckCircle, Sparkles, Target, Zap, Lightbulb, Palette, Code, BarChart } from 'lucide-react';
+import { ArrowRight, CheckCircle, Sparkles, Target, Zap, Lightbulb, Palette, Code, BarChart, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
@@ -25,19 +25,19 @@ const Services = () => {
       ],
       gradient: 'from-orange-500 to-orange-600',
     },
-    {
-      title: 'Digital Marketing',
-      description: 'Data-driven marketing campaigns that deliver measurable results.',
-      icon: Zap,
-      features: [
-        'Search Engine Optimization (SEO)',
-        'Google Ads and PPC campaigns',
-        'Social media marketing',
-        'Content marketing strategy',
-        'Email marketing automation',
-      ],
-      gradient: 'from-orange-400 to-orange-500',
-    },
+    // {
+    //   title: 'Digital Marketing',
+    //   description: 'Data-driven marketing campaigns that deliver measurable results.',
+    //   icon: Zap,
+    //   features: [
+    //     'Search Engine Optimization (SEO)',
+    //     'Google Ads and PPC campaigns',
+    //     'Social media marketing',
+    //     'Content marketing strategy',
+    //     'Email marketing automation',
+    //   ],
+    //   gradient: 'from-orange-400 to-orange-500',
+    // },
     {
       title: 'Creative Design',
       description: 'Stunning visual designs that capture attention and drive engagement.',
@@ -65,18 +65,32 @@ const Services = () => {
       gradient: 'from-orange-300 to-orange-400',
     },
     {
-      title: 'Content Creation',
-      description: 'Engaging content that tells your story and connects with audiences.',
+      title: 'Social Media Management',
+      description: 'Strategic social media solutions to grow your audience and build brand loyalty.',
+      icon: Instagram,
+      features: [
+        'Content planning and scheduling',
+        'Community engagement and moderation',
+        'Social media advertising campaigns',
+        'Performance analytics and reporting',
+        'Influencer outreach and collaborations'
+      ],
+      gradient: 'from-orange-600 to-orange-700',
+    },    
+    {
+      title: 'AIML',
+      description: 'Advanced AI/ML solutions that transform data into actionable insights.',
       icon: Lightbulb,
       features: [
-        'Video production and editing',
-        'Photography and visual content',
-        'Copywriting and content strategy',
-        'Social media content creation',
-        'Blog and article writing',
+        'Custom machine learning model development',
+        'Data preprocessing and feature engineering',
+        'Predictive analytics and forecasting',
+        'Natural language processing solutions',
+        'Computer vision applications'
       ],
       gradient: 'from-orange-500 to-orange-400',
     },
+  
     {
       title: 'Analytics & Optimization',
       description: 'Data-driven insights to continuously improve your marketing performance.',
@@ -269,7 +283,7 @@ const Services = () => {
                   Ongoing partnership for continuous marketing support and brand development.
                 </p>
                 <div className="text-center">
-                  <span className="text-4xl font-bold text-gradient">$5K+</span>
+                  <span className="text-4xl font-bold text-gradient">5K+</span>
                   <p className="text-gray-300 mt-2">Per month</p>
                 </div>
               </CardContent>
@@ -284,8 +298,8 @@ const Services = () => {
                   Strategic guidance and expert advice to help you make informed decisions.
                 </p>
                 <div className="text-center">
-                  <span className="text-4xl font-bold text-gradient">$200</span>
-                  <p className="text-gray-400 mt-2">Per hour</p>
+                  <span className="text-4xl font-bold text-gradient">Custom</span>
+                  <p className="text-gray-400 mt-2">Quote based on kind of Consultation</p>
                 </div>
               </CardContent>
             </Card>

@@ -1,10 +1,10 @@
-
 import React from 'react';
 import { Sparkles, Play, Eye } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 
-const Gallery = () => {
+const OurWork = () => {
   const heroRef = useScrollReveal();
   const portfolioRef = useScrollReveal();
   const featuredRef = useScrollReveal();
@@ -208,24 +208,59 @@ const Gallery = () => {
                   <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Play className="text-white w-8 h-8 ml-1" />
                   </div>
-                  <p className="text-sm opacity-75">Case Study Video</p>
+                  <p className="text-sm opacity-75">Featured Video</p>
                 </div>
               </div>
               <CardHeader>
-                <CardTitle className="text-2xl font-bold text-gradient">Startup Success Story</CardTitle>
+                <CardTitle className="text-2xl font-bold text-gradient">Innovation in Motion</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-300 mb-6 leading-relaxed">
-                  From concept to market leader, we helped this tech startup build a brand identity 
-                  that secured $50M in Series A funding and captured 25% market share.
+                  Our cutting-edge 3D animation techniques brought this tech product to life, 
+                  resulting in a 150% increase in customer engagement and viral social media presence.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="bg-orange-400/20 text-orange-300 px-3 py-1 rounded-full text-sm border border-orange-400/30">Startup</span>
-                  <span className="bg-orange-500/20 text-orange-400 px-3 py-1 rounded-full text-sm border border-orange-500/30">Identity</span>
-                  <span className="bg-orange-600/20 text-orange-500 px-3 py-1 rounded-full text-sm border border-orange-600/30">Strategy</span>
+                  <span className="bg-orange-400/20 text-orange-300 px-3 py-1 rounded-full text-sm border border-orange-400/30">3D Animation</span>
+                  <span className="bg-orange-500/20 text-orange-400 px-3 py-1 rounded-full text-sm border border-orange-500/30">Product Demo</span>
+                  <span className="bg-orange-600/20 text-orange-500 px-3 py-1 rounded-full text-sm border border-orange-600/30">Social Media</span>
                 </div>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-24 bg-gradient-to-b from-black to-gray-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-flex items-center px-6 py-3 bg-orange-500/10 backdrop-blur-xl rounded-full mb-8 border border-orange-500/20">
+            <Sparkles className="w-5 h-5 mr-3 text-orange-500" />
+            <span className="text-sm font-semibold text-white">Ready to Start Your Project?</span>
+          </div>
+          
+          <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
+            Let's Create Something
+            <span className="block text-gradient">Amazing Together</span>
+          </h2>
+          
+          <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+            Ready to bring your vision to life? Let's discuss how we can help you achieve 
+            your creative goals and make your brand stand out.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/contact"
+              className="btn-orange px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+            >
+              Start Your Project
+            </Link>
+            <Link
+              to="/services"
+              className="glass-effect px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 border border-orange-500/30 text-white hover:text-orange-400"
+            >
+              View Our Services
+            </Link>
           </div>
         </div>
       </section>
@@ -233,4 +268,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default OurWork; 

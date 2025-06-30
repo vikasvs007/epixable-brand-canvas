@@ -50,7 +50,7 @@ const Footer = () => {
             </Link>
             
             <p className="text-gray-300 mb-6 max-w-md text-lg leading-relaxed">
-            We are a full-service firm specializing in full-stack web development, AI/ML solutions, and creative design.
+            We are a full-service firm specializing in full-stack web development, AI/ML solutions,Social media management and creative design.
             </p>
             
             <div className="space-y-3 text-gray-300">
