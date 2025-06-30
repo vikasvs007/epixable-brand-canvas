@@ -306,7 +306,7 @@ const Contact = () => {
                 answer: 'Absolutely! We work with businesses of all sizes, from startups to Fortune 500 companies. We tailor our services and pricing to fit your specific needs and budget.',
               },
               {
-                question: 'What makes Epixable different?',
+                question: 'What makes VertexLabs different?',
                 answer: 'Our focus on authentic brand experiences, data-driven strategies, and long-term partnerships sets us apart. We prioritize client success and employee well-being, which translates to exceptional results for every project.',
               },
               {
