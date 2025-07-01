@@ -1,28 +1,19 @@
+
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Users, Award, Sparkles, Zap, Heart, Rocket, Trophy, Target, Lightbulb, Send, Mail, Phone, User, Building, MessageSquare } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { useToast } from '@/hooks/use-toast';
 
 const Home = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    message: '',
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
   
   const heroRef = useScrollReveal();
   const statsRef = useScrollReveal();
   const servicesRef = useScrollReveal();
   const clientsRef = useScrollReveal();
   const testimonialsRef = useScrollReveal();
-  const enquiryRef = useScrollReveal();
+  const contactRef = useScrollReveal();
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -32,56 +23,6 @@ const Home = () => {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleEnquirySubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        toast({
-          title: "Enquiry Sent!",
-          description: "Thank you for your enquiry. We'll get back to you within 24 hours.",
-        });
-
-        // Reset form
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          company: '',
-          message: '',
-        });
-      } else {
-        throw new Error('Failed to send email');
-      }
-    } catch (error) {
-      console.error('Error sending email:', error);
-      toast({
-        title: "Error",
-        description: "Failed to send enquiry. Please try again or contact us directly.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   const stats = [
     { icon: Heart, label: 'Happy Clients', value: '50+', color: 'text-orange-500' },
@@ -364,124 +305,95 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Enquiry Form Section */}
+      {/* Unique Contact Section */}
       <section className="py-24 bg-gradient-to-b from-gray-900 to-black">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6 font-playfair">
-              Get In Touch
-            </h2>
-            <p className="text-xl text-gray-300 font-inter">
-              Ready to start your project? Send us an enquiry and we'll get back to you within 24 hours.
-            </p>
-          </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div ref={contactRef} className="scroll-reveal">
+            <Card className="gradient-border bg-black/50 border-orange-500/20 backdrop-blur-xl overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                {/* Left Side - Interactive Contact */}
+                <div className="p-12 lg:p-16">
+                  <div className="text-center lg:text-left">
+                    <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6 font-playfair">
+                      Let's Start Something Amazing
+                    </h2>
+                    <p className="text-xl text-gray-300 mb-12 font-inter leading-relaxed">
+                      Ready to transform your business? Connect with us and let's create something extraordinary together.
+                    </p>
 
-          <div ref={enquiryRef} className="scroll-reveal">
-            <Card className="gradient-border bg-black/50 border-orange-500/20 backdrop-blur-xl p-8 md:p-12">
-              <form onSubmit={handleEnquirySubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2 font-space">
-                      <User className="inline w-4 h-4 mr-2" />
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400 font-inter"
-                      placeholder="Your full name"
-                      disabled={isSubmitting}
-                    />
-                  </div>
+                    {/* Contact Methods */}
+                    <div className="space-y-6 mb-12">
+                      <a 
+                        href="mailto:hello@vertexlabs.com"
+                        className="group flex items-center space-x-6 p-6 glass-effect rounded-2xl hover:bg-orange-500/10 transition-all duration-300 hover:scale-105 border border-orange-500/20 hover:border-orange-500/40"
+                      >
+                        <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                          <Mail className="w-8 h-8 text-white" />
+                        </div>
+                        <div className="text-left">
+                          <h3 className="text-xl font-bold text-white group-hover:text-orange-400 transition-colors duration-300 font-space">Email Us</h3>
+                          <p className="text-gray-300 font-inter">hello@vertexlabs.com</p>
+                        </div>
+                        <ArrowRight className="w-6 h-6 text-orange-500 ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </a>
 
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2 font-space">
-                      <Mail className="inline w-4 h-4 mr-2" />
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400 font-inter"
-                      placeholder="your@email.com"
-                      disabled={isSubmitting}
-                    />
-                  </div>
-                </div>
+                      <a 
+                        href="tel:+916363163519"
+                        className="group flex items-center space-x-6 p-6 glass-effect rounded-2xl hover:bg-orange-500/10 transition-all duration-300 hover:scale-105 border border-orange-500/20 hover:border-orange-500/40"
+                      >
+                        <div className="w-16 h-16 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                          <Phone className="w-8 h-8 text-white" />
+                        </div>
+                        <div className="text-left">
+                          <h3 className="text-xl font-bold text-white group-hover:text-orange-400 transition-colors duration-300 font-space">Call Us</h3>
+                          <p className="text-gray-300 font-inter">+91 6363163519</p>
+                        </div>
+                        <ArrowRight className="w-6 h-6 text-orange-500 ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </a>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2 font-space">
-                      <Phone className="inline w-4 h-4 mr-2" />
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400 font-inter"
-                      placeholder="+91 1234567890"
-                      disabled={isSubmitting}
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2 font-space">
-                      <Building className="inline w-4 h-4 mr-2" />
-                      Company Name
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400 font-inter"
-                      placeholder="Your company name"
-                      disabled={isSubmitting}
-                    />
+                      <Link 
+                        to="/contact"
+                        className="group flex items-center space-x-6 p-6 glass-effect rounded-2xl hover:bg-orange-500/10 transition-all duration-300 hover:scale-105 border border-orange-500/20 hover:border-orange-500/40"
+                      >
+                        <div className="w-16 h-16 bg-gradient-to-r from-orange-600 to-orange-700 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                          <MessageSquare className="w-8 h-8 text-white" />
+                        </div>
+                        <div className="text-left">
+                          <h3 className="text-xl font-bold text-white group-hover:text-orange-400 transition-colors duration-300 font-space">Send Message</h3>
+                          <p className="text-gray-300 font-inter">Use our contact form</p>
+                        </div>
+                        <ArrowRight className="w-6 h-6 text-orange-500 ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2 font-space">
-                    <MessageSquare className="inline w-4 h-4 mr-2" />
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={6}
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 resize-none text-white placeholder-gray-400 font-inter"
-                    placeholder="Tell us about your project requirements..."
-                    disabled={isSubmitting}
-                  />
-                </div>
+                {/* Right Side - Visual Element */}
+                <div className="relative p-12 lg:p-16 flex items-center justify-center">
+                  <div className="relative">
+                    {/* Animated Circles */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-80 h-80 border-2 border-orange-500/20 rounded-full animate-pulse"></div>
+                      <div className="absolute w-60 h-60 border-2 border-orange-400/30 rounded-full animate-ping"></div>
+                      <div className="absolute w-40 h-40 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-full animate-float"></div>
+                    </div>
 
-                <div className="text-center">
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="btn-orange px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 inline-flex items-center font-space disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    <Send className="mr-2 w-5 h-5" />
-                    {isSubmitting ? 'Sending...' : 'Send Enquiry'}
-                  </button>
+                    {/* Center Content */}
+                    <div className="relative z-10 text-center">
+                      <div className="w-32 h-32 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-8 animate-glow">
+                        <Rocket className="w-16 h-16 text-white" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-gradient mb-4 font-space">Ready to Launch?</h3>
+                      <p className="text-gray-300 font-inter">Your success story starts here</p>
+                    </div>
+
+                    {/* Floating Elements */}
+                    <div className="absolute top-10 right-10 w-4 h-4 bg-orange-400 rounded-full animate-ping"></div>
+                    <div className="absolute bottom-10 left-10 w-3 h-3 bg-orange-300 rounded-full animate-pulse"></div>
+                    <div className="absolute top-1/2 left-0 w-2 h-2 bg-orange-500 rounded-full animate-bounce"></div>
+                  </div>
                 </div>
-              </form>
+              </div>
             </Card>
           </div>
         </div>
