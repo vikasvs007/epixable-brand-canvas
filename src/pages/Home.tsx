@@ -130,8 +130,8 @@ const Home = () => {
 
   const clients = [
     { name: 'ClickNgro', logo: '/images.jpg', website: 'https://clickngro.com' },
-    { name: 'Swansorter', logo: '/images.jpg', website: 'https://swansorter.com' },
-    { name: 'SCV Trust', logo: '/images.jpg', website: 'https://scvtrust.com' },
+    { name: 'Swansorter', logo: '/swan.png', website: 'https://swansorter.com' },
+    { name: 'SCV Trust', logo: '/chayadevi.png', website: 'https://chayadevikrpete.com' },
     { name: 'TechCorp', logo: '/images.jpg', website: 'https://techcorp.com' },
     { name: 'InnovateX', logo: '/images.jpg', website: 'https://innovatex.com' },
     { name: 'DigitalPro', logo: '/images.jpg', website: 'https://digitalpro.com' },
