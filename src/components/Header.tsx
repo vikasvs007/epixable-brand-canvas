@@ -62,14 +62,19 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-4 group relative z-50">
+          <Link to="/" className="flex items-center space-x-3 group relative z-50">
             <div className="relative">
-              <img
-                src="/Logo - VertexLabs.jpg"
-                alt="Vertex Labs Logo"
-                className="h-14 w-14 object-contain rounded-full border-2 border-orange-500 shadow-lg group-hover:border-orange-400 transition-all duration-300 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-orange-500/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full p-0.5 shadow-lg group-hover:shadow-orange-500/25 transition-all duration-300">
+                <div className="w-full h-full bg-black rounded-full flex items-center justify-center relative overflow-hidden">
+                  <img
+                    src="/Logo - VertexLabs.jpg"
+                    alt="Vertex Labs Logo"
+                    className="w-10 h-10 object-contain rounded-full group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
+                </div>
+              </div>
+              <div className="absolute -inset-2 bg-orange-500/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
             
             <div className="relative flex items-center">
@@ -77,11 +82,11 @@ const Header = () => {
                 <span className="tracking-wider">V E R T E</span>
                 <span className="relative inline-block w-6 h-6 sm:w-7 sm:h-7 align-middle mx-1">
                   <span className="absolute inset-0 flex items-center justify-center">
-                    <span className="block w-4 h-4 sm:w-5 sm:h-5 bg-gradient-to-br from-orange-500 to-orange-600 rotate-45 rounded-sm group-hover:rotate-[225deg] transition-transform duration-500"></span>
+                    <span className="block w-4 h-4 sm:w-5 sm:h-5 bg-gradient-to-br from-orange-500 to-orange-600 rotate-45 rounded-sm group-hover:rotate-[225deg] transition-transform duration-500 shadow-lg"></span>
                   </span>
                   <span className="absolute inset-0 flex items-center justify-center">
                     <span
-                      className="text-white text-4xl sm:text-5xl font-playfair font-extrabold drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)] group-hover:scale-110 transition-transform duration-300"
+                      className="text-white text-4xl sm:text-5xl font-playfair font-extrabold drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-300"
                       style={{
                         fontFamily: "'Playfair Display', serif",
                         transform: 'rotate(-8deg) skewY(4deg)',

@@ -1,9 +1,9 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Users, Award, Sparkles, Zap, Heart, Rocket, Trophy, Target, Lightbulb, Send, Mail, Phone, User, Building, MessageSquare } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../components/ui/carousel';
 
 const Home = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -77,12 +77,12 @@ const Home = () => {
   ];
 
   const clients = [
-    { name: 'ClickNgro', logo: '/images.jpg' },
-    { name: 'Swansorter', logo: '/images.jpg' },
-    { name: 'SCV Trust', logo: '/images.jpg' },
-    { name: 'TechCorp', logo: '/images.jpg' },
-    { name: 'InnovateX', logo: '/images.jpg' },
-    { name: 'DigitalPro', logo: '/images.jpg' },
+    { name: 'ClickNgro', logo: '/images.jpg', website: 'https://clickngro.com' },
+    { name: 'Swansorter', logo: '/images.jpg', website: 'https://swansorter.com' },
+    { name: 'SCV Trust', logo: '/images.jpg', website: 'https://scvtrust.com' },
+    { name: 'TechCorp', logo: '/images.jpg', website: 'https://techcorp.com' },
+    { name: 'InnovateX', logo: '/images.jpg', website: 'https://innovatex.com' },
+    { name: 'DigitalPro', logo: '/images.jpg', website: 'https://digitalpro.com' },
   ];
 
   return (
@@ -234,25 +234,45 @@ const Home = () => {
             </p>
           </div>
           
-          <div ref={clientsRef} className="scroll-reveal grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-            {clients.map((client, index) => (
-              <Card 
-                key={index} 
-                className="group card-hover gradient-border bg-black/50 border-orange-500/20 backdrop-blur-xl p-6 text-center"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="aspect-square flex items-center justify-center mb-4">
-                  <img
-                    src={client.logo}
-                    alt={client.name}
-                    className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
-                  />
-                </div>
-                <h3 className="text-sm font-semibold text-gray-300 group-hover:text-orange-400 transition-colors duration-300 font-space">
-                  {client.name}
-                </h3>
-              </Card>
-            ))}
+          <div ref={clientsRef} className="scroll-reveal">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full max-w-6xl mx-auto"
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {clients.map((client, index) => (
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <a
+                      href={client.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group block"
+                    >
+                      <Card className="card-hover gradient-border bg-black/50 border-orange-500/20 backdrop-blur-xl p-6 text-center h-full">
+                        <div className="aspect-square flex items-center justify-center mb-4">
+                          <img
+                            src={client.logo}
+                            alt={client.name}
+                            className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
+                          />
+                        </div>
+                        <h3 className="text-sm font-semibold text-gray-300 group-hover:text-orange-400 transition-colors duration-300 font-space">
+                          {client.name}
+                        </h3>
+                        <div className="mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <span className="text-xs text-orange-400">Visit Website →</span>
+                        </div>
+                      </Card>
+                    </a>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex bg-black/50 border-orange-500/30 hover:bg-orange-500/20 text-white" />
+              <CarouselNext className="hidden md:flex bg-black/50 border-orange-500/30 hover:bg-orange-500/20 text-white" />
+            </Carousel>
           </div>
         </div>
       </section>
