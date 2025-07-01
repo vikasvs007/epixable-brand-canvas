@@ -4,7 +4,7 @@ import { ArrowRight, Star, Users, Award, Sparkles, Zap, Heart, Rocket, Trophy, T
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../components/ui/carousel';
-import { useEmblaCarousel } from 'embla-carousel-react';
+import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
 const Home = () => {
@@ -179,23 +179,26 @@ const Home = () => {
               {/* Interactive Features Showcase */}
               <div className="mb-12">
                 <div className="grid grid-cols-2 gap-4 mb-6">
-                  {heroFeatures.map((feature, index) => (
-                    <div
-                      key={index}
-                      className={`p-4 rounded-xl border transition-all duration-500 cursor-pointer ${
-                        currentFeature === index
-                          ? 'border-orange-500/50 bg-orange-500/10 scale-105'
-                          : 'border-white/10 bg-white/5 hover:border-orange-500/30'
-                      }`}
-                      onClick={() => setCurrentFeature(index)}
-                    >
-                      <div className={`w-8 h-8 rounded-lg bg-gradient-to-r ${feature.color} flex items-center justify-center mb-3 mx-auto lg:mx-0`}>
-                        <feature.icon className="w-4 h-4 text-white" />
+                  {heroFeatures.map((feature, index) => {
+                    const Icon = feature.icon;
+                    return (
+                      <div
+                        key={index}
+                        className={`p-4 rounded-xl border transition-all duration-500 cursor-pointer ${
+                          currentFeature === index
+                            ? 'border-orange-500/50 bg-orange-500/10 scale-105'
+                            : 'border-white/10 bg-white/5 hover:border-orange-500/30'
+                        }`}
+                        onClick={() => setCurrentFeature(index)}
+                      >
+                        <div className={`w-8 h-8 rounded-lg bg-gradient-to-r ${feature.color} flex items-center justify-center mb-3 mx-auto lg:mx-0`}>
+                          <Icon className="w-4 h-4 text-white" />
+                        </div>
+                        <h3 className="text-sm font-bold text-white mb-1">{feature.title}</h3>
+                        <p className="text-xs text-gray-400">{feature.description}</p>
                       </div>
-                      <h3 className="text-sm font-bold text-white mb-1">{feature.title}</h3>
-                      <p className="text-xs text-gray-400">{feature.description}</p>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
               
@@ -229,9 +232,14 @@ const Home = () => {
 
                 {/* Center feature display */}
                 <div className="relative z-10 text-center">
-                  <div className={`w-24 h-24 bg-gradient-to-r ${heroFeatures[currentFeature].color} rounded-full flex items-center justify-center mx-auto mb-6 animate-glow transition-all duration-500`}>
-                    <heroFeatures[currentFeature].icon className="w-12 h-12 text-white" />
-                  </div>
+                  {(() => {
+                    const Icon = heroFeatures[currentFeature].icon;
+                    return (
+                      <div className={`w-24 h-24 bg-gradient-to-r ${heroFeatures[currentFeature].color} rounded-full flex items-center justify-center mx-auto mb-6 animate-glow transition-all duration-500`}>
+                        <Icon className="w-12 h-12 text-white" />
+                      </div>
+                    );
+                  })()}
                   <h3 className="text-2xl font-bold text-gradient mb-2">{heroFeatures[currentFeature].title}</h3>
                   <p className="text-gray-300">{heroFeatures[currentFeature].description}</p>
                 </div>
@@ -256,24 +264,27 @@ const Home = () => {
       <section className="py-24 bg-gradient-to-b from-black to-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div ref={statsRef} className="scroll-reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <Card 
-                key={index} 
-                className="card-hover gradient-border bg-black/50 border-orange-500/20 backdrop-blur-xl"
-                style={{ animationDelay: `${index * 150}ms` }}
-              >
-                <CardContent className="p-8 text-center">
-                  <div className="relative inline-block mb-6">
-                    <stat.icon className={`w-16 h-16 ${stat.color} mx-auto animate-float`} />
-                    <div className={`absolute inset-0 ${stat.color.replace('text-', 'bg-').replace('-500', '-300')} rounded-full blur-lg opacity-30 animate-pulse`}></div>
-                  </div>
-                  <div className="text-5xl font-bold text-gradient mb-3">
-                    {stat.value}
-                  </div>
-                  <div className="text-gray-300 font-semibold text-lg">{stat.label}</div>
-                </CardContent>
-              </Card>
-            ))}
+            {stats.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <Card 
+                  key={index} 
+                  className="card-hover gradient-border bg-black/50 border-orange-500/20 backdrop-blur-xl"
+                  style={{ animationDelay: `${index * 150}ms` }}
+                >
+                  <CardContent className="p-8 text-center">
+                    <div className="relative inline-block mb-6">
+                      <Icon className={`w-16 h-16 ${stat.color} mx-auto animate-float`} />
+                      <div className={`absolute inset-0 ${stat.color.replace('text-', 'bg-').replace('-500', '-300')} rounded-full blur-lg opacity-30 animate-pulse`}></div>
+                    </div>
+                    <div className="text-5xl font-bold text-gradient mb-3">
+                      {stat.value}
+                    </div>
+                    <div className="text-gray-300 font-semibold text-lg">{stat.label}</div>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -291,33 +302,36 @@ const Home = () => {
           </div>
           
           <div ref={servicesRef} className="scroll-reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {services.map((service, index) => (
-              <Card 
-                key={index} 
-                className="group card-hover gradient-border bg-black/50 border-orange-500/20 backdrop-blur-xl overflow-hidden"
-                style={{ animationDelay: service.delay }}
-              >
-                <CardHeader className="pb-4">
-                  <div className={`relative w-20 h-20 bg-gradient-to-r ${service.gradient} rounded-2xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 animate-glow`}>
-                    <service.icon className="w-10 h-10 text-white" />
-                  </div>
+            {services.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <Card 
+                  key={index} 
+                  className="group card-hover gradient-border bg-black/50 border-orange-500/20 backdrop-blur-xl overflow-hidden"
+                  style={{ animationDelay: service.delay }}
+                >
+                  <CardHeader className="pb-4">
+                    <div className={`relative w-20 h-20 bg-gradient-to-r ${service.gradient} rounded-2xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 animate-glow`}>
+                      <Icon className="w-10 h-10 text-white" />
+                    </div>
+                    
+                    <CardTitle className="text-2xl font-bold text-white group-hover:text-orange-400 transition-colors duration-300">
+                      {service.title}
+                    </CardTitle>
+                  </CardHeader>
                   
-                  <CardTitle className="text-2xl font-bold text-white group-hover:text-orange-400 transition-colors duration-300">
-                    {service.title}
-                  </CardTitle>
-                </CardHeader>
-                
-                <CardContent>
-                  <CardDescription className="text-gray-300 text-base leading-relaxed">
-                    {service.description}
-                  </CardDescription>
-                </CardContent>
-                
-                <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <ArrowRight className="w-6 h-6 text-orange-500" />
-                </div>
-              </Card>
-            ))}
+                  <CardContent>
+                    <CardDescription className="text-gray-300 text-base leading-relaxed">
+                      {service.description}
+                    </CardDescription>
+                  </CardContent>
+                  
+                  <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <ArrowRight className="w-6 h-6 text-orange-500" />
+                  </div>
+                </Card>
+              );
+            })}
           </div>
 
           <div className="text-center mt-16">
