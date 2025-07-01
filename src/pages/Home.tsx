@@ -1,16 +1,28 @@
 
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Users, Award, Sparkles, Zap, Heart, Rocket, Trophy, Target, Lightbulb } from 'lucide-react';
+import { ArrowRight, Star, Users, Award, Sparkles, Zap, Heart, Rocket, Trophy, Target, Lightbulb, Send, Mail, Phone, User, Building, MessageSquare } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { useToast } from '@/hooks/use-toast';
 
 const Home = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    message: '',
+  });
+  const { toast } = useToast();
+  
   const heroRef = useScrollReveal();
   const statsRef = useScrollReveal();
   const servicesRef = useScrollReveal();
+  const clientsRef = useScrollReveal();
   const testimonialsRef = useScrollReveal();
+  const enquiryRef = useScrollReveal();
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -20,6 +32,34 @@ const Home = () => {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleEnquirySubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Enquiry submitted:', formData);
+    
+    // Here you would integrate with Supabase to send the email
+    toast({
+      title: "Enquiry Sent!",
+      description: "Thank you for your enquiry. We'll get back to you within 24 hours.",
+    });
+
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+      message: '',
+    });
+  };
 
   const stats = [
     { icon: Heart, label: 'Happy Clients', value: '50+', color: 'text-orange-500' },
@@ -51,14 +91,11 @@ const Home = () => {
 
   const services = [
     {
-  
-        title: 'Web Development',
-        description: 'End-to-end full-stack web development to build responsive, secure, and high-performance websites and applications.',
-        icon: Sparkles,
-        gradient: 'from-orange-500 to-orange-600',
-        delay: '0ms',
-      
-      
+      title: 'Web Development',
+      description: 'End-to-end full-stack web development to build responsive, secure, and high-performance websites and applications.',
+      icon: Sparkles,
+      gradient: 'from-orange-500 to-orange-600',
+      delay: '0ms',
     },
     {
       title: 'AI & ML Solutions',
@@ -67,7 +104,6 @@ const Home = () => {
       gradient: 'from-purple-500 to-purple-600',
       delay: '400ms',
     },
-    
     {
       title: 'Creative Design',
       description: 'Stunning visual designs that capture your brand essence and engage your customers effectively.',
@@ -75,6 +111,15 @@ const Home = () => {
       gradient: 'from-orange-600 to-orange-700',
       delay: '400ms',
     },
+  ];
+
+  const clients = [
+    { name: 'ClickNgro', logo: '/images.jpg' },
+    { name: 'Swansorter', logo: '/images.jpg' },
+    { name: 'SCV Trust', logo: '/images.jpg' },
+    { name: 'TechCorp', logo: '/images.jpg' },
+    { name: 'InnovateX', logo: '/images.jpg' },
+    { name: 'DigitalPro', logo: '/images.jpg' },
   ];
 
   return (
@@ -123,7 +168,7 @@ const Home = () => {
                 <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
               <Link
-                to="/gallery"
+                to="/our-work"
                 className="group glass-effect text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-white/10 transition-all duration-300 hover:scale-105 border border-orange-500/30 hover:border-orange-500/50"
               >
                 View Our Work
@@ -214,14 +259,49 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Our Clients Section */}
       <section className="py-24 bg-gradient-to-b from-gray-900 to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-bold text-gradient mb-6">
+            <h2 className="text-5xl md:text-6xl font-bold text-gradient mb-6 font-playfair">
+              Our Clients
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-inter">
+              Trusted by leading companies worldwide to deliver exceptional results
+            </p>
+          </div>
+          
+          <div ref={clientsRef} className="scroll-reveal grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+            {clients.map((client, index) => (
+              <Card 
+                key={index} 
+                className="group card-hover gradient-border bg-black/50 border-orange-500/20 backdrop-blur-xl p-6 text-center"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="aspect-square flex items-center justify-center mb-4">
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
+                  />
+                </div>
+                <h3 className="text-sm font-semibold text-gray-300 group-hover:text-orange-400 transition-colors duration-300 font-space">
+                  {client.name}
+                </h3>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-24 bg-black">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold text-gradient mb-6 font-playfair">
               What Our Clients Say
             </h2>
-            <p className="text-xl text-gray-300">Real stories from real people who love what we do</p>
+            <p className="text-xl text-gray-300 font-inter">Real stories from real people who love what we do</p>
           </div>
           
           <div ref={testimonialsRef} className="scroll-reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -240,7 +320,7 @@ const Home = () => {
                 </CardHeader>
                 
                 <CardContent>
-                  <p className="text-gray-300 text-lg italic leading-relaxed mb-6">
+                  <p className="text-gray-300 text-lg italic leading-relaxed mb-6 font-inter">
                     "{testimonial.quote}"
                   </p>
                   
@@ -251,13 +331,130 @@ const Home = () => {
                       </span>
                     </div>
                     <div>
-                      <div className="font-bold text-white text-lg">{testimonial.author}</div>
-                      <div className="text-gray-400">{testimonial.company}</div>
+                      <div className="font-bold text-white text-lg font-space">{testimonial.author}</div>
+                      <div className="text-gray-400 font-inter">{testimonial.company}</div>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Enquiry Form Section */}
+      <section className="py-24 bg-gradient-to-b from-gray-900 to-black">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6 font-playfair">
+              Get In Touch
+            </h2>
+            <p className="text-xl text-gray-300 font-inter">
+              Ready to start your project? Send us an enquiry and we'll get back to you within 24 hours.
+            </p>
+          </div>
+
+          <div ref={enquiryRef} className="scroll-reveal">
+            <Card className="gradient-border bg-black/50 border-orange-500/20 backdrop-blur-xl p-8 md:p-12">
+              <form onSubmit={handleEnquirySubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2 font-space">
+                      <User className="inline w-4 h-4 mr-2" />
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400 font-inter"
+                      placeholder="Your full name"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2 font-space">
+                      <Mail className="inline w-4 h-4 mr-2" />
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400 font-inter"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2 font-space">
+                      <Phone className="inline w-4 h-4 mr-2" />
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400 font-inter"
+                      placeholder="+91 1234567890"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2 font-space">
+                      <Building className="inline w-4 h-4 mr-2" />
+                      Company Name
+                    </label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400 font-inter"
+                      placeholder="Your company name"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2 font-space">
+                    <MessageSquare className="inline w-4 h-4 mr-2" />
+                    Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={6}
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 resize-none text-white placeholder-gray-400 font-inter"
+                    placeholder="Tell us about your project requirements..."
+                  />
+                </div>
+
+                <div className="text-center">
+                  <button
+                    type="submit"
+                    className="btn-orange px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 inline-flex items-center font-space"
+                  >
+                    <Send className="mr-2 w-5 h-5" />
+                    Send Enquiry
+                  </button>
+                </div>
+              </form>
+            </Card>
           </div>
         </div>
       </section>
@@ -270,15 +467,15 @@ const Home = () => {
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-gradient">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-gradient font-playfair">
             Ready to Transform Your Brand? 🚀
           </h2>
-          <p className="text-xl mb-12 max-w-3xl mx-auto text-gray-300 leading-relaxed">
+          <p className="text-xl mb-12 max-w-3xl mx-auto text-gray-300 leading-relaxed font-inter">
             Let's work together to create something extraordinary that drives your business forward and sets you apart from the competition.
           </p>
           <Link
             to="/contact"
-            className="btn-orange px-12 py-6 rounded-xl font-bold text-xl inline-flex items-center transform transition-all duration-300 hover:scale-105"
+            className="btn-orange px-12 py-6 rounded-xl font-bold text-xl inline-flex items-center transform transition-all duration-300 hover:scale-105 font-space"
           >
             Start Your Project Today 
             <Rocket className="ml-4 w-7 h-7" />
