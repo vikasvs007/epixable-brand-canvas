@@ -58,11 +58,21 @@ const Footer = () => {
             <div className="space-y-3 text-gray-300 mb-6">
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-orange-500" />
-                <span className="font-inter">hello@vertexlabs.com</span>
+                <a 
+                  href="mailto:hello@vertexlabs.com" 
+                  className="font-inter hover:text-orange-400 transition-colors duration-300"
+                >
+                  hello@vertexlabs.com
+                </a>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-orange-500" />
-                <span className="font-inter">+91 6363163519</span>
+                <a 
+                  href="tel:+916363163519" 
+                  className="font-inter hover:text-orange-400 transition-colors duration-300"
+                >
+                  +91 6363163519
+                </a>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-orange-500" />

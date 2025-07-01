@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight, CheckCircle, Sparkles, Target, Zap, Lightbulb, Palette, Code, BarChart, Instagram } from 'lucide-react';
+import { ArrowRight, CheckCircle, Sparkles, Target, Zap, Lightbulb, Palette, Code, BarChart, Instagram, Search, Users, FileText, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
@@ -25,19 +25,6 @@ const Services = () => {
       ],
       gradient: 'from-orange-500 to-orange-600',
     },
-    // {
-    //   title: 'Digital Marketing',
-    //   description: 'Data-driven marketing campaigns that deliver measurable results.',
-    //   icon: Zap,
-    //   features: [
-    //     'Search Engine Optimization (SEO)',
-    //     'Google Ads and PPC campaigns',
-    //     'Social media marketing',
-    //     'Content marketing strategy',
-    //     'Email marketing automation',
-    //   ],
-    //   gradient: 'from-orange-400 to-orange-500',
-    // },
     {
       title: 'Creative Design',
       description: 'Stunning visual designs that capture attention and drive engagement.',
@@ -90,7 +77,6 @@ const Services = () => {
       ],
       gradient: 'from-orange-500 to-orange-400',
     },
-  
     {
       title: 'Analytics & Optimization',
       description: 'Data-driven insights to continuously improve your marketing performance.',
@@ -111,24 +97,56 @@ const Services = () => {
       step: '01',
       title: 'Discovery & Strategy',
       description: 'We dive deep into your business, goals, and target audience to develop a comprehensive strategy.',
+      icon: Search,
+      details: [
+        'Comprehensive business analysis and competitor research',
+        'Target audience identification and persona development',
+        'Market positioning and brand strategy formulation',
+        'Goal setting and KPI definition for measurable success',
+        'Technical requirements assessment and feasibility study'
+      ],
       gradient: 'from-orange-500 to-orange-600',
     },
     {
       step: '02',
       title: 'Creative Development',
       description: 'Our team creates compelling designs and content that align with your brand and objectives.',
+      icon: Palette,
+      details: [
+        'Creative concept development and visual identity design',
+        'Content strategy and copywriting for all touchpoints',
+        'Wireframing and prototyping for digital experiences',
+        'Brand asset creation including logos, colors, and typography',
+        'User experience design focused on conversion optimization'
+      ],
       gradient: 'from-orange-400 to-orange-500',
     },
     {
       step: '03',
       title: 'Implementation',
       description: 'We execute the strategy across all channels, ensuring consistent brand experience.',
+      icon: Code,
+      details: [
+        'Full-stack development with modern technologies and frameworks',
+        'Cross-platform deployment ensuring optimal performance',
+        'Integration with third-party tools and analytics platforms',
+        'Quality assurance testing across devices and browsers',
+        'Content management system setup and team training'
+      ],
       gradient: 'from-orange-600 to-orange-700',
     },
     {
       step: '04',
       title: 'Optimization',
       description: 'We continuously monitor, analyze, and optimize performance to maximize your ROI.',
+      icon: TrendingUp,
+      details: [
+        'Performance monitoring and real-time analytics tracking',
+        'A/B testing and conversion rate optimization campaigns',
+        'Regular strategy refinement based on market feedback',
+        'Detailed reporting and insights for informed decision making',
+        'Ongoing support and maintenance for sustained growth'
+      ],
       gradient: 'from-orange-300 to-orange-400',
     },
   ];
@@ -204,7 +222,7 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Process Section */}
+      {/* Enhanced Process Section */}
       <section className="py-24 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
@@ -212,35 +230,55 @@ const Services = () => {
               Our Process
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              We follow a proven methodology to ensure every project delivers exceptional results.
+              We follow a proven methodology to ensure every project delivers exceptional results and exceeds your expectations.
             </p>
           </div>
 
-          <div ref={processRef} className="scroll-reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div ref={processRef} className="scroll-reveal space-y-16">
             {process.map((item, index) => (
-              <Card 
-                key={index} 
-                className="card-hover gradient-border bg-black/50 border-orange-500/20 backdrop-blur-xl text-center relative"
-                style={{ animationDelay: `${index * 150}ms` }}
-              >
-                <CardHeader>
-                  <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${item.gradient} text-white rounded-full text-xl font-bold mb-6 mx-auto animate-glow`}>
-                    {item.step}
+              <div key={index} className="relative">
+                <Card 
+                  className="card-hover gradient-border bg-black/50 border-orange-500/20 backdrop-blur-xl overflow-hidden"
+                  style={{ animationDelay: `${index * 150}ms` }}
+                >
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
+                    {/* Left Side - Step Info */}
+                    <div className="space-y-6">
+                      <div className="flex items-center space-x-4">
+                        <div className={`w-16 h-16 bg-gradient-to-r ${item.gradient} text-white rounded-full text-xl font-bold flex items-center justify-center animate-glow`}>
+                          {item.step}
+                        </div>
+                        <div className={`w-16 h-16 bg-gradient-to-r ${item.gradient} rounded-2xl flex items-center justify-center animate-glow`}>
+                          <item.icon className="w-8 h-8 text-white" />
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <h3 className="text-3xl font-bold text-white mb-4 font-playfair">{item.title}</h3>
+                        <p className="text-gray-300 text-lg leading-relaxed font-inter">{item.description}</p>
+                      </div>
+                    </div>
+
+                    {/* Right Side - Detailed Features */}
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-bold text-gradient mb-4 font-space">What We Deliver:</h4>
+                      <ul className="space-y-3">
+                        {item.details.map((detail, detailIndex) => (
+                          <li key={detailIndex} className="flex items-start space-x-3">
+                            <CheckCircle className="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" />
+                            <span className="text-gray-300 leading-relaxed font-inter">{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                  <CardTitle className="text-xl font-bold text-white">{item.title}</CardTitle>
-                </CardHeader>
-                
-                <CardContent>
-                  <CardDescription className="text-gray-300 leading-relaxed">{item.description}</CardDescription>
-                </CardContent>
-                
-                {index < process.length - 1 && (
-                  <div className="hidden lg:block absolute top-8 left-full w-full">
-                    <div className="w-full h-0.5 bg-gradient-to-r from-orange-600 to-orange-500 transform -translate-x-8"></div>
-                    <ArrowRight className="absolute top-1/2 right-4 transform -translate-y-1/2 w-4 h-4 text-orange-500" />
-                  </div>
-                )}
-              </Card>
+
+                  {/* Connection Line */}
+                  {index < process.length - 1 && (
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-0.5 h-16 bg-gradient-to-b from-orange-500 to-transparent"></div>
+                  )}
+                </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -329,7 +367,7 @@ const Services = () => {
               Start Your Project <ArrowRight className="ml-3 w-6 h-6" />
             </Link>
             <Link
-              to="/gallery"
+              to="/our-work"
               className="glass-effect text-white px-10 py-5 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105 border border-orange-500/30 hover:border-orange-500/50 hover:bg-orange-500/10"
             >
               View Our Work

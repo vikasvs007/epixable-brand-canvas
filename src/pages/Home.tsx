@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Users, Award, Sparkles, Zap, Heart, Rocket, Trophy, Target, Lightbulb, Send, Mail, Phone, User, Building, MessageSquare } from 'lucide-react';
@@ -15,6 +14,7 @@ const Home = () => {
     company: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   
   const heroRef = useScrollReveal();
@@ -41,24 +41,46 @@ const Home = () => {
     }));
   };
 
-  const handleEnquirySubmit = (e: React.FormEvent) => {
+  const handleEnquirySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Enquiry submitted:', formData);
+    setIsSubmitting(true);
     
-    // Here you would integrate with Supabase to send the email
-    toast({
-      title: "Enquiry Sent!",
-      description: "Thank you for your enquiry. We'll get back to you within 24 hours.",
-    });
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      company: '',
-      message: '',
-    });
+      if (response.ok) {
+        toast({
+          title: "Enquiry Sent!",
+          description: "Thank you for your enquiry. We'll get back to you within 24 hours.",
+        });
+
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          message: '',
+        });
+      } else {
+        throw new Error('Failed to send email');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send enquiry. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const stats = [
@@ -372,6 +394,7 @@ const Home = () => {
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400 font-inter"
                       placeholder="Your full name"
+                      disabled={isSubmitting}
                     />
                   </div>
 
@@ -389,6 +412,7 @@ const Home = () => {
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400 font-inter"
                       placeholder="your@email.com"
+                      disabled={isSubmitting}
                     />
                   </div>
                 </div>
@@ -407,6 +431,7 @@ const Home = () => {
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400 font-inter"
                       placeholder="+91 1234567890"
+                      disabled={isSubmitting}
                     />
                   </div>
 
@@ -423,6 +448,7 @@ const Home = () => {
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400 font-inter"
                       placeholder="Your company name"
+                      disabled={isSubmitting}
                     />
                   </div>
                 </div>
@@ -441,16 +467,18 @@ const Home = () => {
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 resize-none text-white placeholder-gray-400 font-inter"
                     placeholder="Tell us about your project requirements..."
+                    disabled={isSubmitting}
                   />
                 </div>
 
                 <div className="text-center">
                   <button
                     type="submit"
-                    className="btn-orange px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 inline-flex items-center font-space"
+                    disabled={isSubmitting}
+                    className="btn-orange px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 inline-flex items-center font-space disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Send className="mr-2 w-5 h-5" />
-                    Send Enquiry
+                    {isSubmitting ? 'Sending...' : 'Send Enquiry'}
                   </button>
                 </div>
               </form>
