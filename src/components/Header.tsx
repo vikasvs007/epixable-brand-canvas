@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Sparkles, ChevronDown } from 'lucide-react';
@@ -204,21 +203,30 @@ const Header = () => {
           </button>
 
           {/* Mobile Navigation Overlay */}
-          <div className={`lg:hidden fixed inset-0 bg-black/95 backdrop-blur-xl transition-all duration-500 ${
+          <div className={`lg:hidden fixed inset-0 z-[9999] bg-black shadow-2xl border-t-4 border-orange-500 transition-all duration-500 ${
             isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
           }`}>
+            {/* Always visible close button in top-right */}
+            <button
+              className="absolute top-6 right-6 p-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white shadow-lg z-[10000] transition-all duration-300 border-2 border-white"
+              onClick={() => setIsMenuOpen(false)}
+              aria-label="Close menu"
+              style={{fontSize: 24, lineHeight: 1}}
+            >
+              <X size={28} />
+            </button>
             <div className="flex flex-col justify-center items-center min-h-screen px-6">
-              <nav className="flex flex-col space-y-6 text-center">
+              <nav className="flex flex-col space-y-8 text-center w-full max-w-xs mx-auto mt-16">
                 {navigation.map((item, index) => (
                   <div key={item.name}>
                     {item.dropdown ? (
                       <div>
                         <button
                           onClick={() => handleDropdownToggle(item.name)}
-                          className={`flex items-center justify-center text-2xl font-bold transition-all duration-500 transform ${
+                          className={`flex items-center justify-center w-full text-2xl font-bold rounded-lg px-4 py-3 transition-all duration-500 transform border-2 ${
                             isActive(item.href)
-                              ? 'text-orange-500 scale-110'
-                              : 'text-white hover:text-orange-500 hover:scale-105'
+                              ? 'text-orange-500 scale-110 bg-orange-500/20 border-orange-500'
+                              : 'text-white hover:text-orange-500 hover:scale-105 bg-gray-900 border-gray-800'
                           }`}
                           style={{ 
                             animationDelay: `${index * 100}ms`,
@@ -230,15 +238,14 @@ const Header = () => {
                             activeDropdown === item.name ? 'rotate-180' : ''
                           }`} />
                         </button>
-                        
-                        <div className={`mt-4 space-y-3 transition-all duration-300 ${
+                        <div className={`mt-2 space-y-2 transition-all duration-300 w-full ${
                           activeDropdown === item.name ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'
                         }`}>
                           {item.dropdown.map((dropdownItem, dropIndex) => (
                             <Link
                               key={dropdownItem.name}
                               to={dropdownItem.href}
-                              className="block text-lg text-gray-300 hover:text-orange-400 transition-colors duration-300 py-2"
+                              className="block text-lg text-white hover:text-orange-400 bg-gray-800 rounded-md px-4 py-3 transition-colors duration-300 border-2 border-gray-800 hover:border-orange-500"
                               onClick={() => setIsMenuOpen(false)}
                               style={{ animationDelay: `${(index + dropIndex) * 50}ms` }}
                             >
@@ -250,10 +257,10 @@ const Header = () => {
                     ) : (
                       <Link
                         to={item.href}
-                        className={`block text-2xl font-bold transition-all duration-500 transform ${
+                        className={`block text-2xl font-bold rounded-lg px-4 py-3 transition-all duration-500 transform border-2 ${
                           isActive(item.href)
-                            ? 'text-orange-500 scale-110'
-                            : 'text-white hover:text-orange-500 hover:scale-105'
+                            ? 'text-orange-500 scale-110 bg-orange-500/20 border-orange-500'
+                            : 'text-white hover:text-orange-500 hover:scale-105 bg-gray-900 border-gray-800'
                         }`}
                         style={{ 
                           animationDelay: `${index * 100}ms`,
@@ -266,11 +273,10 @@ const Header = () => {
                     )}
                   </div>
                 ))}
-                
                 {/* Mobile CTA */}
                 <Link
                   to="/contact"
-                  className="btn-orange px-8 py-4 text-lg font-bold rounded-xl inline-flex items-center transform transition-all duration-300 hover:scale-105 mt-8"
+                  className="btn-orange px-8 py-4 text-lg font-bold rounded-xl inline-flex items-center transform transition-all duration-300 hover:scale-105 mt-8 shadow-lg border-2 border-orange-500"
                   onClick={() => setIsMenuOpen(false)}
                   style={{ 
                     animationDelay: `${navigation.length * 100}ms`,

@@ -160,7 +160,7 @@ const Home = () => {
             {/* Left Side - Main Content */}
             <div ref={heroRef} className="scroll-reveal text-center lg:text-left">
               <div className="inline-flex items-center px-6 py-3 bg-white/5 backdrop-blur-xl rounded-full mb-8 border border-orange-500/20 animate-shimmer bg-gradient-to-r from-transparent via-white/10 to-transparent bg-[200px_100%]">
-                <Sparkles className="w-5 h-5 mr-3 text-orange-500" />
+                <Sparkles className="w-7 h-7 mr-5 text-orange-500" />
                 <span className="text-sm font-semibold text-white">Welcome to the Future of Branding</span>
               </div>
               
