@@ -25,7 +25,7 @@ const About = () => {
     {
       icon: Award,
       title: 'Creative Excellence',
-      description: 'We strive for the highest standards in every project we undertake.',
+      description: 'We strive for the highest standards in every project we undertake for bettermnt of our clients',
       gradient: 'from-orange-600 to-orange-700',
     },
     {
