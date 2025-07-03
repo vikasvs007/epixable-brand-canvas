@@ -12,14 +12,14 @@ const About = () => {
   const values = [
     {
       icon: Target,
-      title: 'Client Success',
+      title: 'Client Success ',
       description: 'We measure our success by the growth and achievements of our clients.',
       gradient: 'from-orange-500 to-orange-600',
     },
     {
       icon: Heart,
       title: 'Employee Well-being',
-      description: 'We believe happy employees create exceptional work and lasting relationships.',
+      description: 'We believe happy employees create exceptional work and lasting relationships for bettermnt of our clients',
       gradient: 'from-orange-400 to-orange-500',
     },
     {
