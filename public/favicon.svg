@@ -1,13 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <defs>
     <clipPath id="circle">
-      <circle cx="16" cy="16" r="16"/>
+      <circle cx="16" cy="16" r="15" />
     </clipPath>
   </defs>
-  
-  <!-- Background circle -->
-  <circle cx="16" cy="16" r="16" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
-  
-  <!-- Logo image clipped to circle -->
-  <image href="/Logo - VertexLabs.png" x="2" y="2" width="28" height="28" clip-path="url(#circle)"/>
+  <!-- White circular base for contrast on all backgrounds -->
+  <circle cx="16" cy="16" r="15" fill="#fff" />
+  <!-- Logo image clipped to circle, centered -->
+  <image href="/Logo - VertexLabs.png" x="4" y="4" width="24" height="24" clip-path="url(#circle)" />
 </svg> 
