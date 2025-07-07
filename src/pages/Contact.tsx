@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Sparkles } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { Sparkles, Mail, Phone, MapPin, Send, Clock, MessageSquare, ArrowRight } from 'lucide-react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const Contact = () => {
-  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,197 +10,216 @@ const Contact = () => {
     company: '',
     service: '',
     budget: '',
-    message: '',
+    message: ''
   });
 
+  const heroRef = useScrollReveal();
+  const contactInfoRef = useScrollReveal();
+  const formRef = useScrollReveal();
+  const faqRef = useScrollReveal();
+
+  const contactInfo = [
+    {
+      icon: Mail,
+      info: 'hello@vertexlabs.com',
+      description: 'Send us an email anytime',
+      gradient: 'from-[#003366] to-[#004080]'
+    },
+    {
+      icon: Phone,
+      info: '+91 6363163519',
+      description: 'Call us for immediate support',
+      gradient: 'from-[#90D2B5] to-[#A3C7D2]'
+    },
+    {
+      icon: MapPin,
+      info: 'Mysore, India',
+      description: 'Visit our office',
+      gradient: 'from-[#049E8A] to-[#038A76]'
+    },
+    {
+      icon: Clock,
+      info: 'Mon - Fri, 9AM - 6PM',
+      description: 'Business hours',
+      gradient: 'from-[#A3C7D2] to-[#8FB8C5]'
+    }
+  ];
+
   const services = [
-    'Brand Strategy & Identity',
-    'Digital Marketing',
-    'Creative Design',
     'Web Development',
-    'Content Creation',
-    'Analytics & Optimization',
-    'Other',
+    'AI & ML Solutions',
+    'Creative Design',
+    'Social Media Management',
+    'Digital Marketing',
+    'Cybersecurity',
+    'Consultation',
+    'Other'
   ];
 
   const budgetRanges = [
-    'Under $5,000',
-    '$5,000 - $15,000',
-    '$15,000 - $50,000',
-    '$50,000 - $100,000',
-    'Over $100,000',
+    '₹10,000 - ₹50,000',
+    '₹50,000 - ₹1,00,000',
+    '₹1,00,000 - ₹5,00,000',
+    '₹5,00,000+',
+    'Not sure yet'
+  ];
+
+  const faqs = [
+    {
+      question: "What is your typical project timeline?",
+      answer: "Project timelines vary based on complexity and scope. Simple websites typically take 2-4 weeks, while complex applications can take 2-6 months. We'll provide a detailed timeline during our initial consultation."
+    },
+    {
+      question: "Do you provide ongoing support after project completion?",
+      answer: "Yes, we offer various support packages including maintenance, updates, and technical support. We believe in building long-term relationships with our clients."
+    },
+    {
+      question: "What technologies do you specialize in?",
+      answer: "We work with modern technologies including React, Next.js, Node.js, Python, AI/ML frameworks, and cloud platforms. We choose the best technology stack for each project's specific needs."
+    },
+    {
+      question: "How do you handle project communication?",
+      answer: "We maintain regular communication through scheduled meetings, progress reports, and dedicated project management tools. You'll have direct access to your project team throughout the process."
+    },
+    {
+      question: "What is your payment structure?",
+      answer: "We typically require a 50% deposit to begin work, with the remaining balance due upon project completion. For larger projects, we can arrange milestone-based payments."
+    },
+    {
+      question: "Do you work with international clients?",
+      answer: "Absolutely! We have experience working with clients from around the world. We can accommodate different time zones and provide remote collaboration tools for seamless communication."
+    }
   ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value,
+      [name]: value
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      const response = await fetch('https://formspree.io/f/xdkzbvzj', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        toast({
-          title: "Message Sent!",
-          description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
-        });
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          company: '',
-          service: '',
-          budget: '',
-          message: '',
-        });
-      } else {
-        toast({
-          title: "Error",
-          description: "Failed to send your message. Please try again later.",
-          variant: "destructive",
-        });
-      }
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to send your message. Please try again later.",
-        variant: "destructive",
-      });
-    }
+    // Handle form submission logic here
+    console.log('Form submitted:', formData);
+    // You can add email sending logic or API calls here
   };
-
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: 'Email Us',
-      info: 'hello@epixable.com',
-      description: 'Send us an email anytime',
-    },
-    {
-      icon: Phone,
-      title: 'Call Us',
-      info: '(555) 123-4567',
-      description: 'Mon-Fri from 9am to 6pm',
-    },
-    {
-      icon: MapPin,
-      title: 'Visit Us',
-      info: '123 Business Ave, Suite 100',
-      description: 'Downtown Business District',
-    },
-  ];
 
   return (
     <div className="bg-black min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 lg:py-32 bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-hidden">
+      <section className="py-20 lg:py-32 bg-gradient-to-br from-black via-[#003366]/20 to-black text-white relative overflow-hidden">
         {/* Background elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-1/4 w-32 h-32 bg-orange-500/10 rounded-full blur-2xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-1/4 w-48 h-48 bg-orange-400/10 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute top-20 left-1/4 w-32 h-32 bg-[#90D2B5]/10 rounded-full blur-2xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-1/4 w-48 h-48 bg-[#A3C7D2]/10 rounded-full blur-3xl animate-float"></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center px-6 py-3 bg-white/5 backdrop-blur-xl rounded-full mb-8 border border-orange-500/20 animate-fade-in-up">
-            <Sparkles className="w-5 h-5 mr-3 text-orange-500" />
-            <span className="text-sm font-semibold text-white font-space">Let's Build Together</span>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+          <div ref={heroRef} className="scroll-reveal">
+            <div className="inline-flex items-center px-6 py-3 bg-white/5 backdrop-blur-xl rounded-full mb-8 border border-[#90D2B5]/20 animate-fade-in-up">
+              <Sparkles className="w-5 h-5 mr-3 text-[#90D2B5]" />
+              <span className="text-sm font-semibold text-white">Get In Touch</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight animate-fade-in-up">
+              Let's Start
+              <span className="block text-gradient mt-4">
+                Something Amazing ✨
+              </span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-[#EEF2F5] animate-fade-in-up font-inter leading-relaxed">
+              Ready to transform your business? We're here to help you bring your vision to life. 
+              Let's discuss your project and create something extraordinary together.
+            </p>
           </div>
-
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in-up font-playfair">
-            Let's Create Something
-            <span className="block text-gradient">
-              Amazing Together
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-300 animate-fade-in-up font-inter leading-relaxed">
-            Ready to take your brand to the next level? We'd love to hear about your project 
-            and discuss how we can help you achieve your goals.
-          </p>
         </div>
       </section>
 
-      {/* Contact Info Section */}
-      <section className="py-20 bg-gradient-to-b from-black to-gray-900">
+      {/* Contact Information */}
+      <section className="py-20 bg-gradient-to-b from-black to-[#003366]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {contactInfo.map((item, index) => (
-              <div 
-                key={index} 
-                className="glass-effect rounded-2xl p-8 text-center card-hover animate-fade-in-up border border-orange-500/20"
-                style={{ animationDelay: `${index * 200}ms` }}
-              >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl text-white mb-6 animate-glow">
-                  <item.icon size={24} />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2 font-space">{item.title}</h3>
-                <p className="text-lg text-orange-500 font-semibold mb-2 font-inter">{item.info}</p>
-                <p className="text-gray-400 font-inter">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form Section */}
-      <section className="py-20 bg-gray-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-playfair">
-              Start Your Project
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
+              Get In Touch
             </h2>
-            <p className="text-xl text-gray-300 font-inter">
-              Tell us about your project and we'll get back to you with a custom proposal.
+            <p className="text-xl text-[#EEF2F5] max-w-3xl mx-auto leading-relaxed">
+              Choose your preferred way to reach us. We're here to help and answer any questions you may have.
             </p>
           </div>
 
-          <div className="glass-effect rounded-2xl p-8 md:p-12 border border-orange-500/20 animate-fade-in-up">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div ref={contactInfoRef} className="scroll-reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {contactInfo.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={index}
+                  className="glass-effect rounded-2xl p-8 text-center card-hover animate-fade-in-up border border-[#90D2B5]/20"
+                  style={{ animationDelay: `${index * 150}ms` }}
+                >
+                  <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${item.gradient} rounded-xl text-white mb-6 animate-glow`}>
+                    <Icon className="w-8 h-8" />
+                  </div>
+                  <p className="text-lg text-[#90D2B5] font-semibold mb-2 font-inter">{item.info}</p>
+                  <p className="text-[#999999] font-inter">{item.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form */}
+      <section className="py-20 bg-black">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
+              Send Us a Message
+            </h2>
+            <p className="text-xl text-[#EEF2F5] font-inter">
+              Tell us about your project and we'll get back to you within 24 hours.
+            </p>
+          </div>
+
+          <div ref={formRef} className="scroll-reveal">
+            <form onSubmit={handleSubmit} className="glass-effect rounded-2xl p-8 md:p-12 border border-[#90D2B5]/20 animate-fade-in-up">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2 font-space">
+                  <label htmlFor="name" className="block text-sm font-medium text-[#EEF2F5] mb-2 font-space">
                     Full Name *
                   </label>
                   <input
                     type="text"
                     id="name"
                     name="name"
-                    required
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400 font-inter"
-                    placeholder="Your full name"
+                    required
+                    className="w-full px-4 py-3 bg-[#003366]/50 border border-[#90D2B5]/30 rounded-lg focus:ring-2 focus:ring-[#90D2B5] focus:border-transparent outline-none transition-all duration-300 text-white placeholder-[#999999] font-inter"
+                    placeholder="Enter your full name"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2 font-space">
+                  <label htmlFor="email" className="block text-sm font-medium text-[#EEF2F5] mb-2 font-space">
                     Email Address *
                   </label>
                   <input
                     type="email"
                     id="email"
                     name="email"
-                    required
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400 font-inter"
-                    placeholder="your@email.com"
+                    required
+                    className="w-full px-4 py-3 bg-[#003366]/50 border border-[#90D2B5]/30 rounded-lg focus:ring-2 focus:ring-[#90D2B5] focus:border-transparent outline-none transition-all duration-300 text-white placeholder-[#999999] font-inter"
+                    placeholder="Enter your email address"
                   />
                 </div>
-              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2 font-space">
+                  <label htmlFor="phone" className="block text-sm font-medium text-[#EEF2F5] mb-2 font-space">
                     Phone Number
                   </label>
                   <input
@@ -210,13 +228,13 @@ const Contact = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400 font-inter"
-                    placeholder="(555) 123-4567"
+                    className="w-full px-4 py-3 bg-[#003366]/50 border border-[#90D2B5]/30 rounded-lg focus:ring-2 focus:ring-[#90D2B5] focus:border-transparent outline-none transition-all duration-300 text-white placeholder-[#999999] font-inter"
+                    placeholder="Enter your phone number"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2 font-space">
+                  <label htmlFor="company" className="block text-sm font-medium text-[#EEF2F5] mb-2 font-space">
                     Company Name
                   </label>
                   <input
@@ -225,28 +243,25 @@ const Contact = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400 font-inter"
-                    placeholder="Your company name"
+                    className="w-full px-4 py-3 bg-[#003366]/50 border border-[#90D2B5]/30 rounded-lg focus:ring-2 focus:ring-[#90D2B5] focus:border-transparent outline-none transition-all duration-300 text-white placeholder-[#999999] font-inter"
+                    placeholder="Enter your company name"
                   />
                 </div>
-              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-gray-300 mb-2 font-space">
-                    Service Interested In *
+                  <label htmlFor="service" className="block text-sm font-medium text-[#EEF2F5] mb-2 font-space">
+                    Service Interested In
                   </label>
                   <select
                     id="service"
                     name="service"
-                    required
                     value={formData.service}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 text-white font-inter"
+                    className="w-full px-4 py-3 bg-[#003366]/50 border border-[#90D2B5]/30 rounded-lg focus:ring-2 focus:ring-[#90D2B5] focus:border-transparent outline-none transition-all duration-300 text-white font-inter"
                   >
-                    <option value="" className="bg-black">Select a service</option>
+                    <option value="" className="bg-[#003366]">Select a service</option>
                     {services.map((service) => (
-                      <option key={service} value={service} className="bg-black">
+                      <option key={service} value={service} className="bg-[#003366]">
                         {service}
                       </option>
                     ))}
@@ -254,19 +269,19 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="budget" className="block text-sm font-medium text-gray-300 mb-2 font-space">
-                    Project Budget
+                  <label htmlFor="budget" className="block text-sm font-medium text-[#EEF2F5] mb-2 font-space">
+                    Budget Range
                   </label>
                   <select
                     id="budget"
                     name="budget"
                     value={formData.budget}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 text-white font-inter"
+                    className="w-full px-4 py-3 bg-[#003366]/50 border border-[#90D2B5]/30 rounded-lg focus:ring-2 focus:ring-[#90D2B5] focus:border-transparent outline-none transition-all duration-300 text-white font-inter"
                   >
-                    <option value="" className="bg-black">Select budget range</option>
+                    <option value="" className="bg-[#003366]">Select budget range</option>
                     {budgetRanges.map((range) => (
-                      <option key={range} value={range} className="bg-black">
+                      <option key={range} value={range} className="bg-[#003366]">
                         {range}
                       </option>
                     ))}
@@ -274,19 +289,19 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2 font-space">
+              <div className="mb-8">
+                <label htmlFor="message" className="block text-sm font-medium text-[#EEF2F5] mb-2 font-space">
                   Project Details *
                 </label>
                 <textarea
                   id="message"
                   name="message"
-                  required
-                  rows={6}
                   value={formData.message}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-black/50 border border-orange-500/30 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-300 resize-none text-white placeholder-gray-400 font-inter"
-                  placeholder="Tell us about your project, goals, timeline, and any specific requirements..."
+                  required
+                  rows={6}
+                  className="w-full px-4 py-3 bg-[#003366]/50 border border-[#90D2B5]/30 rounded-lg focus:ring-2 focus:ring-[#90D2B5] focus:border-transparent outline-none transition-all duration-300 resize-none text-white placeholder-[#999999] font-inter"
+                  placeholder="Tell us about your project, goals, and any specific requirements..."
                 />
               </div>
 
@@ -295,7 +310,8 @@ const Contact = () => {
                   type="submit"
                   className="btn-orange px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 inline-flex items-center font-space"
                 >
-                  Send Message <Send className="ml-2" size={20} />
+                  Send Message
+                  <Send className="ml-2 w-5 h-5" />
                 </button>
               </div>
             </form>
@@ -306,40 +322,39 @@ const Contact = () => {
       {/* FAQ Section */}
       <section className="py-20 bg-black">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-playfair">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
               Frequently Asked Questions
             </h2>
+            <p className="text-xl text-[#EEF2F5] max-w-3xl mx-auto leading-relaxed">
+              Find answers to common questions about our services, process, and what to expect when working with us.
+            </p>
           </div>
 
-          <div className="space-y-6">
-            {[
-              {
-                question: 'How long does a typical project take?',
-                answer: 'Project timelines vary depending on scope and complexity. Brand identity projects typically take 4-6 weeks, while comprehensive marketing campaigns can take 8-12 weeks. We provide detailed timelines during our initial consultation.',
-              },
-              {
-                question: 'Do you work with startups and small businesses?',
-                answer: 'Absolutely! We work with businesses of all sizes, from startups to Fortune 500 companies. We tailor our services and pricing to fit your specific needs and budget.',
-              },
-              {
-                question: 'What makes VertexLabs different?',
-                answer: 'Our focus on authentic brand experiences, data-driven strategies, and long-term partnerships sets us apart. We prioritize client success and employee well-being, which translates to exceptional results for every project.',
-              },
-              {
-                question: 'Can you help with ongoing marketing support?',
-                answer: 'Yes! We offer monthly retainer packages for ongoing marketing support, including content creation, campaign management, and performance optimization.',
-              },
-            ].map((faq, index) => (
-              <div 
-                key={index} 
-                className="glass-effect rounded-xl p-6 card-hover animate-fade-in-up border border-orange-500/20"
+          <div ref={faqRef} className="scroll-reveal space-y-6">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className="glass-effect rounded-xl p-6 card-hover animate-fade-in-up border border-[#90D2B5]/20"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <h3 className="text-lg font-semibold text-white mb-3 font-space">{faq.question}</h3>
-                <p className="text-gray-300 font-inter">{faq.answer}</p>
+                <h3 className="text-xl font-bold text-white mb-3 font-space">{faq.question}</h3>
+                <p className="text-[#EEF2F5] font-inter">{faq.answer}</p>
               </div>
             ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-[#EEF2F5] mb-6 font-inter">
+              Still have questions? We're here to help!
+            </p>
+            <a
+              href="mailto:hello@vertexlabs.com"
+              className="inline-flex items-center text-[#90D2B5] hover:text-[#A3C7D2] transition-colors duration-300 font-semibold font-space"
+            >
+              Contact us directly
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </a>
           </div>
         </div>
       </section>

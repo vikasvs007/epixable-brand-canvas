@@ -55,33 +55,33 @@ const Header = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       isScrolled 
-        ? 'bg-black/95 backdrop-blur-xl shadow-2xl border-b border-orange-500/20' 
-        : 'bg-black/80 backdrop-blur-sm'
+        ? 'bg-[#003366]/95 backdrop-blur-xl shadow-2xl border-b border-[#90D2B5]/20' 
+        : 'bg-[#003366]/80 backdrop-blur-sm'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group relative z-50">
             <div className="relative">
-              <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full p-0.5 shadow-lg group-hover:shadow-orange-500/25 transition-all duration-300">
+              <div className="w-14 h-14 bg-gradient-to-br from-[#003366] to-[#004080] rounded-full p-0.5 shadow-lg group-hover:shadow-[#90D2B5]/25 transition-all duration-300">
                 <div className="w-full h-full bg-black rounded-full flex items-center justify-center relative overflow-hidden">
                   <img
                     src="/Logo - VertexLabs.jpg"
                     alt="Vertex Labs Logo"
                     className="w-10 h-10 object-contain rounded-full group-hover:scale-110 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#90D2B5]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
                 </div>
               </div>
-              <div className="absolute -inset-2 bg-orange-500/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -inset-2 bg-[#90D2B5]/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
             
             <div className="relative flex items-center">
-              <span className="flex items-center space-x-0.5 text-2xl sm:text-3xl font-montserrat font-bold text-white group-hover:text-orange-400 transition-colors duration-300">
+              <span className="flex items-center space-x-0.5 text-2xl sm:text-3xl font-montserrat font-bold text-white group-hover:text-[#90D2B5] transition-colors duration-300">
                 <span className="tracking-wider">V E R T E</span>
                 <span className="relative inline-block w-6 h-6 sm:w-7 sm:h-7 align-middle mx-1">
                   <span className="absolute inset-0 flex items-center justify-center">
-                    <span className="block w-4 h-4 sm:w-5 sm:h-5 bg-gradient-to-br from-orange-500 to-orange-600 rotate-45 rounded-sm group-hover:rotate-[225deg] transition-transform duration-500 shadow-lg"></span>
+                    <span className="block w-4 h-4 sm:w-5 sm:h-5 bg-gradient-to-br from-[#003366] to-[#004080] rotate-45 rounded-sm group-hover:rotate-[225deg] transition-transform duration-500 shadow-lg"></span>
                   </span>
                   <span className="absolute inset-0 flex items-center justify-center">
                     <span
@@ -100,11 +100,11 @@ const Header = () => {
               </span>
               
               {/* Animated underline */}
-              <div className="absolute -bottom-2 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-orange-400 group-hover:w-full transition-all duration-500"></div>
+              <div className="absolute -bottom-2 left-0 w-0 h-0.5 bg-gradient-to-r from-[#003366] to-[#90D2B5] group-hover:w-full transition-all duration-500"></div>
               
               {/* Floating particles */}
-              <div className="absolute -top-1 -right-1 w-1 h-1 bg-orange-400 rounded-full animate-ping opacity-60 group-hover:opacity-100"></div>
-              <div className="absolute -bottom-1 -left-1 w-1 h-1 bg-orange-300 rounded-full animate-ping opacity-60 group-hover:opacity-100" style={{animationDelay: '1s'}}></div>
+              <div className="absolute -top-1 -right-1 w-1 h-1 bg-[#90D2B5] rounded-full animate-ping opacity-60 group-hover:opacity-100"></div>
+              <div className="absolute -bottom-1 -left-1 w-1 h-1 bg-[#A3C7D2] rounded-full animate-ping opacity-60 group-hover:opacity-100" style={{animationDelay: '1s'}}></div>
             </div>
           </Link>
 
@@ -117,8 +117,8 @@ const Header = () => {
                     <button
                       className={`flex items-center px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 ${
                         isActive(item.href)
-                          ? 'text-orange-500 bg-orange-500/10 border border-orange-500/20'
-                          : 'text-white hover:text-orange-500 hover:bg-white/5 border border-transparent hover:border-orange-500/20'
+                          ? 'text-[#90D2B5] bg-[#90D2B5]/10 border border-[#90D2B5]/20'
+                          : 'text-white hover:text-[#90D2B5] hover:bg-white/5 border border-transparent hover:border-[#90D2B5]/20'
                       } card-hover`}
                       onMouseEnter={() => setActiveDropdown(item.name)}
                       onMouseLeave={() => setActiveDropdown(null)}
@@ -131,7 +131,7 @@ const Header = () => {
                     
                     {/* Dropdown Menu */}
                     <div 
-                      className={`absolute top-full left-0 mt-2 w-64 bg-black/95 backdrop-blur-xl border border-orange-500/20 rounded-xl shadow-2xl transition-all duration-300 ${
+                      className={`absolute top-full left-0 mt-2 w-64 bg-[#003366]/95 backdrop-blur-xl border border-[#90D2B5]/20 rounded-xl shadow-2xl transition-all duration-300 ${
                         activeDropdown === item.name 
                           ? 'opacity-100 visible translate-y-0' 
                           : 'opacity-0 invisible -translate-y-2'
@@ -144,7 +144,7 @@ const Header = () => {
                           <Link
                             key={dropdownItem.name}
                             to={dropdownItem.href}
-                            className="block px-4 py-3 text-sm text-gray-300 hover:text-orange-400 hover:bg-orange-500/10 rounded-lg transition-all duration-300 border border-transparent hover:border-orange-500/20"
+                            className="block px-4 py-3 text-sm text-[#EEF2F5] hover:text-[#90D2B5] hover:bg-[#90D2B5]/10 rounded-lg transition-all duration-300 border border-transparent hover:border-[#90D2B5]/20"
                             style={{ animationDelay: `${index * 50}ms` }}
                           >
                             {dropdownItem.name}
@@ -158,13 +158,13 @@ const Header = () => {
                     to={item.href}
                     className={`relative px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 ${
                       isActive(item.href)
-                        ? 'text-orange-500 bg-orange-500/10 border border-orange-500/20'
-                        : 'text-white hover:text-orange-500 hover:bg-white/5 border border-transparent hover:border-orange-500/20'
+                        ? 'text-[#90D2B5] bg-[#90D2B5]/10 border border-[#90D2B5]/20'
+                        : 'text-white hover:text-[#90D2B5] hover:bg-white/5 border border-transparent hover:border-[#90D2B5]/20'
                     } card-hover`}
                   >
                     {item.name}
                     {isActive(item.href) && (
-                      <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
+                      <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-[#90D2B5] rounded-full animate-pulse"></div>
                     )}
                   </Link>
                 )}
@@ -183,7 +183,7 @@ const Header = () => {
 
           {/* Mobile menu button */}
           <button
-            className="lg:hidden relative p-3 rounded-xl hover:bg-orange-500/10 transition-all duration-300 border border-transparent hover:border-orange-500/20 z-50"
+            className="lg:hidden relative p-3 rounded-xl hover:bg-[#90D2B5]/10 transition-all duration-300 border border-transparent hover:border-[#90D2B5]/20 z-50"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <div className="relative w-6 h-6">
@@ -195,7 +195,7 @@ const Header = () => {
               />
               <X 
                 size={24} 
-                className={`absolute text-orange-500 transition-all duration-500 ${
+                className={`absolute text-[#90D2B5] transition-all duration-500 ${
                   isMenuOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-180 scale-50'
                 }`} 
               />
@@ -203,12 +203,12 @@ const Header = () => {
           </button>
 
           {/* Mobile Navigation Overlay */}
-          <div className={`lg:hidden fixed inset-0 z-[9999] bg-black shadow-2xl border-t-4 border-orange-500 transition-all duration-500 ${
+          <div className={`lg:hidden fixed inset-0 z-[9999] bg-[#003366] shadow-2xl border-t-4 border-[#90D2B5] transition-all duration-500 ${
             isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
           }`}>
             {/* Always visible close button in top-right */}
             <button
-              className="absolute top-6 right-6 p-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white shadow-lg z-[10000] transition-all duration-300 border-2 border-white"
+              className="absolute top-6 right-6 p-3 rounded-full bg-[#90D2B5] hover:bg-[#7BC4A3] text-[#003366] shadow-lg z-[10000] transition-all duration-300 border-2 border-white"
               onClick={() => setIsMenuOpen(false)}
               aria-label="Close menu"
               style={{fontSize: 24, lineHeight: 1}}
@@ -225,8 +225,8 @@ const Header = () => {
                           onClick={() => handleDropdownToggle(item.name)}
                           className={`flex items-center justify-center w-full text-2xl font-bold rounded-lg px-4 py-3 transition-all duration-500 transform border-2 ${
                             isActive(item.href)
-                              ? 'text-orange-500 scale-110 bg-orange-500/20 border-orange-500'
-                              : 'text-white hover:text-orange-500 hover:scale-105 bg-gray-900 border-gray-800'
+                              ? 'text-[#90D2B5] scale-110 bg-[#90D2B5]/20 border-[#90D2B5]'
+                              : 'text-white hover:text-[#90D2B5] hover:scale-105 bg-[#002244] border-[#001122]'
                           }`}
                           style={{ 
                             animationDelay: `${index * 100}ms`,
@@ -245,7 +245,7 @@ const Header = () => {
                             <Link
                               key={dropdownItem.name}
                               to={dropdownItem.href}
-                              className="block text-lg text-white hover:text-orange-400 bg-gray-800 rounded-md px-4 py-3 transition-colors duration-300 border-2 border-gray-800 hover:border-orange-500"
+                              className="block text-lg text-white hover:text-[#90D2B5] bg-[#002244] rounded-md px-4 py-3 transition-colors duration-300 border-2 border-[#001122] hover:border-[#90D2B5]"
                               onClick={() => setIsMenuOpen(false)}
                               style={{ animationDelay: `${(index + dropIndex) * 50}ms` }}
                             >
@@ -259,8 +259,8 @@ const Header = () => {
                         to={item.href}
                         className={`block text-2xl font-bold rounded-lg px-4 py-3 transition-all duration-500 transform border-2 ${
                           isActive(item.href)
-                            ? 'text-orange-500 scale-110 bg-orange-500/20 border-orange-500'
-                            : 'text-white hover:text-orange-500 hover:scale-105 bg-gray-900 border-gray-800'
+                            ? 'text-[#90D2B5] scale-110 bg-[#90D2B5]/20 border-[#90D2B5]'
+                            : 'text-white hover:text-[#90D2B5] hover:scale-105 bg-[#002244] border-[#001122]'
                         }`}
                         style={{ 
                           animationDelay: `${index * 100}ms`,
@@ -276,7 +276,7 @@ const Header = () => {
                 {/* Mobile CTA */}
                 <Link
                   to="/contact"
-                  className="btn-orange px-8 py-4 text-lg font-bold rounded-xl inline-flex items-center transform transition-all duration-300 hover:scale-105 mt-8 shadow-lg border-2 border-orange-500"
+                  className="btn-orange px-8 py-4 text-lg font-bold rounded-xl inline-flex items-center transform transition-all duration-300 hover:scale-105 mt-8 shadow-lg border-2 border-[#90D2B5]"
                   onClick={() => setIsMenuOpen(false)}
                   style={{ 
                     animationDelay: `${navigation.length * 100}ms`,
