@@ -125,16 +125,15 @@ const Home = () => {
       {/* Enhanced Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-[#003366]/20 to-black text-white overflow-hidden">
         {/* Animated background elements */}
-        <div className="absolute inset-0">
-          <div 
-            className="absolute w-96 h-96 bg-[#90D2B5]/20 rounded-full blur-3xl animate-glow"
-            style={{ 
-              left: `${mousePosition.x * 0.02}%`, 
-              top: `${mousePosition.y * 0.02}%`,
-              transition: 'all 0.5s ease-out'
-            }}
-          ></div>
-          <div className="absolute top-20 right-20 w-64 h-64 bg-[#A3C7D2]/10 rounded-full blur-2xl animate-float"></div>
+        <div className="absolute inset-0 z-0">
+          {/* SVG illustration as a large, semi-transparent background */}
+          <img
+            src="/hero-illustration.svg"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] max-w-none opacity-20 pointer-events-none select-none hidden md:block"
+            style={{ zIndex: 1 }}
+          />
+          <div className="absolute w-96 h-96 bg-[#90D2B5]/20 rounded-full blur-3xl animate-glow top-20 right-20"></div>
+          <div className="absolute bottom-20 left-20 w-64 h-64 bg-[#A3C7D2]/10 rounded-full blur-2xl animate-float"></div>
           <div className="absolute bottom-20 left-20 w-48 h-48 bg-[#049E8A]/15 rounded-full blur-xl animate-pulse"></div>
         </div>
 
@@ -205,12 +204,18 @@ const Home = () => {
             </div>
 
             {/* Right Side - Animated Visual */}
-            <div className="relative flex items-center justify-center h-full">
+            <div className="relative flex flex-col items-center justify-center h-full gap-6">
+              {/* Professional, on-brand hero illustration */}
+              {/* <img
+                src="https://undraw.co/api/illustrations/undraw_online_ad_re_ol62.svg"
+                alt="Digital agency, branding, and creative work illustration"
+                className="w-full max-w-xs md:max-w-sm lg:max-w-md rounded-none mb-4"
+                style={{ zIndex: 2, position: 'relative', background: 'transparent' }}
+              /> */}
               <div className="relative">
                 <div className="w-80 h-80 border-2 border-[#90D2B5]/20 rounded-full animate-pulse"></div>
                 <div className="absolute w-60 h-60 border-2 border-[#A3C7D2]/30 rounded-full animate-ping"></div>
                 <div className="absolute w-40 h-40 bg-gradient-to-r from-[#90D2B5]/20 to-[#A3C7D2]/20 rounded-full animate-float"></div>
-                
                 {/* Floating feature card */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/80 backdrop-blur-xl rounded-2xl p-6 border border-[#90D2B5]/20 max-w-xs">
                   <div className="flex items-center space-x-3 mb-3">
@@ -221,7 +226,6 @@ const Home = () => {
                   </div>
                   <p className="text-[#EEF2F5]">{heroFeatures[currentFeature].description}</p>
                 </div>
-
                 {/* Floating elements */}
                 <div className="absolute top-10 right-10 bg-gradient-to-r from-[#003366] to-[#004080] p-3 rounded-full animate-bounce">
                   <Star className="w-6 h-6 text-white" />

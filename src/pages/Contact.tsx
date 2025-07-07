@@ -13,6 +13,9 @@ const Contact = () => {
     message: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
   const heroRef = useScrollReveal();
   const contactInfoRef = useScrollReveal();
   const formRef = useScrollReveal();
@@ -99,11 +102,38 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
-    // You can add email sending logic or API calls here
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    try {
+      const response = await fetch('https://formspree.io/f/xdkzbvzj', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          service: formData.service,
+          budget: formData.budget,
+          message: formData.message,
+        }),
+      });
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', phone: '', company: '', service: '', budget: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (err) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -112,6 +142,12 @@ const Contact = () => {
       <section className="py-20 lg:py-32 bg-gradient-to-br from-black via-[#003366]/20 to-black text-white relative overflow-hidden">
         {/* Background elements */}
         <div className="absolute inset-0">
+          <img
+            src="/contact-illustration.svg"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] max-w-none opacity-20 pointer-events-none select-none hidden md:block"
+            style={{ zIndex: 1 }}
+            alt="Contact Illustration"
+          />
           <div className="absolute top-20 left-1/4 w-32 h-32 bg-[#90D2B5]/10 rounded-full blur-2xl animate-pulse"></div>
           <div className="absolute bottom-20 right-1/4 w-48 h-48 bg-[#A3C7D2]/10 rounded-full blur-3xl animate-float"></div>
         </div>
@@ -305,13 +341,19 @@ const Contact = () => {
                 />
               </div>
 
+              {submitStatus === 'success' && (
+                <div className="mb-6 text-green-400 font-semibold text-center">Thank you! Your message has been sent.</div>
+              )}
+              {submitStatus === 'error' && (
+                <div className="mb-6 text-red-400 font-semibold text-center">Something went wrong. Please try again.</div>
+              )}
               <div className="text-center">
                 <button
                   type="submit"
                   className="btn-orange px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 inline-flex items-center font-space"
+                  disabled={isSubmitting}
                 >
-                  Send Message
-                  <Send className="ml-2 w-5 h-5" />
+                  {isSubmitting ? 'Sending...' : (<><span>Send Message</span><Send className="ml-2 w-5 h-5" /></>)}
                 </button>
               </div>
             </form>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900" height="600" viewBox="0 0 900 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="80%">
+      <stop offset="0%" stop-color="#003366" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#003366" stop-opacity="0.5"/>
+    </radialGradient>
+    <linearGradient id="waveGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#90D2B5" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#A3C7D2" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="600" fill="url(#bgGrad)"/>
+  <!-- Abstract waves -->
+  <path d="M0 500 Q 200 400 450 520 T 900 480 V600 H0Z" fill="url(#waveGrad)"/>
+  <ellipse cx="700" cy="180" rx="160" ry="90" fill="#90D2B5" fill-opacity="0.18"/>
+  <ellipse cx="220" cy="420" rx="120" ry="60" fill="#A3C7D2" fill-opacity="0.13"/>
+  <!-- Geometric shapes -->
+  <rect x="350" y="160" width="180" height="130" rx="24" fill="#fff" fill-opacity="0.95"/>
+  <rect x="380" y="200" width="120" height="20" rx="8" fill="#003366" fill-opacity="0.8"/>
+  <rect x="380" y="235" width="80" height="16" rx="8" fill="#90D2B5" fill-opacity="0.8"/>
+  <rect x="380" y="265" width="60" height="16" rx="8" fill="#A3C7D2" fill-opacity="0.8"/>
+  <circle cx="440" cy="295" r="12" fill="#049E8A" fill-opacity="0.8"/>
+  <!-- Subtle icons (rocket, code, paintbrush, brain) -->
+  <g opacity="0.7">
+    <!-- Rocket icon -->
+    <path d="M520 350 l20 -40 20 40 -20 10z" fill="#049E8A"/>
+    <circle cx="540" cy="340" r="5" fill="#fff"/>
+    <!-- Code icon -->
+    <rect x="600" y="400" width="32" height="18" rx="4" fill="#003366"/>
+    <rect x="605" y="405" width="8" height="8" rx="2" fill="#90D2B5"/>
+    <rect x="619" y="405" width="8" height="8" rx="2" fill="#A3C7D2"/>
+    <!-- Paintbrush icon -->
+    <rect x="180" y="120" width="10" height="40" rx="5" fill="#049E8A"/>
+    <ellipse cx="185" cy="120" rx="7" ry="7" fill="#fff"/>
+    <!-- Brain/AI icon -->
+    <ellipse cx="250" cy="160" rx="18" ry="14" fill="#A3C7D2"/>
+    <path d="M250 146 Q 255 155 250 160 Q 245 165 250 174" stroke="#003366" stroke-width="2" fill="none"/>
+  </g>
+</svg> 

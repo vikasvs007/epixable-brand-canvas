@@ -153,6 +153,12 @@ const OurWork = () => {
       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-[#003366]/20 to-black text-white overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0">
+          <img
+            src="/work-illustration.svg"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] max-w-none opacity-20 pointer-events-none select-none hidden md:block"
+            style={{ zIndex: 1 }}
+            alt="Our Work Illustration"
+          />
           <div className="absolute w-96 h-96 bg-[#90D2B5]/20 rounded-full blur-3xl animate-glow top-20 right-20"></div>
           <div className="absolute bottom-20 left-20 w-64 h-64 bg-[#A3C7D2]/10 rounded-full blur-2xl animate-float"></div>
         </div>
