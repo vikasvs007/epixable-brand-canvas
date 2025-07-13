@@ -189,6 +189,8 @@ const Contact = () => {
               Choose your preferred way to reach us. We're here to help and answer any questions you may have.
             </p>
           </div>
+                                  {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
+
 
           <div ref={contactInfoRef} className="scroll-reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {contactInfo.map((item, index) => {
