@@ -165,6 +165,8 @@ const Contact = () => {
                 Something Amazing ✨
               </span>
             </h1>
+                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
+
             
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-[#EEF2F5] animate-fade-in-up font-inter leading-relaxed">
               Ready to transform your business? We're here to help you bring your vision to life. 
