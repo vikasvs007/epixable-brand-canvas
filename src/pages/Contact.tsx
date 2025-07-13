@@ -246,6 +246,7 @@ const Contact = () => {
                   />
                 </div>
 
+
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-[#EEF2F5] mb-2 font-space">
                     Email Address *
@@ -261,6 +262,9 @@ const Contact = () => {
                     placeholder="Enter your email address"
                   />
                 </div>
+                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
+                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
+
 
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-[#EEF2F5] mb-2 font-space">
@@ -276,6 +280,8 @@ const Contact = () => {
                     placeholder="Enter your phone number"
                   />
                 </div>
+                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
+                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
 
                 <div>
                   <label htmlFor="company" className="block text-sm font-medium text-[#EEF2F5] mb-2 font-space">
