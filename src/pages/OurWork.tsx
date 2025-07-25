@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Eye, ArrowRight, Sparkles, ExternalLink, Star, Users, TrendingUp, Award, Filter, X } from 'lucide-react';
+import { Eye, ArrowRight, Sparkles, ExternalLink, Star, Users, TrendingUp, Award, Filter, X, MessageSquare } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../components/ui/carousel';
@@ -29,7 +29,8 @@ const OurWork = () => {
       icon: '💻',
       gradient: 'from-[#003366] to-[#004080]',
       projects: 12,
-      successRate: '98%'
+      successRate: '98%',
+      borderColor: 'border-[#003366]/20'
     },
     {
       title: 'AI & ML Solutions',
@@ -37,7 +38,8 @@ const OurWork = () => {
       icon: '🤖',
       gradient: 'from-[#90D2B5] to-[#A3C7D2]',
       projects: 8,
-      successRate: '95%'
+      successRate: '95%',
+      borderColor: 'border-[#90D2B5]/20'
     },
     {
       title: 'Creative Design',
@@ -45,7 +47,8 @@ const OurWork = () => {
       icon: '🎨',
       gradient: 'from-[#049E8A] to-[#038A76]',
       projects: 15,
-      successRate: '100%'
+      successRate: '100%',
+      borderColor: 'border-[#049E8A]/20'
     },
     {
       title: 'Digital Marketing',
@@ -53,7 +56,17 @@ const OurWork = () => {
       icon: '📈',
       gradient: 'from-[#A3C7D2] to-[#8FB8C5]',
       projects: 20,
-      successRate: '92%'
+      successRate: '92%',
+      borderColor: 'border-[#A3C7D2]/20'
+    },
+    {
+      title: 'Customized Chatbots',
+      description: 'Intelligent, conversational chatbots tailored to your business needs, enhancing customer engagement and automating support.',
+      icon: <MessageSquare className="w-10 h-10 text-white" />, // Use lucide-react icon
+      gradient: 'from-[#90D2B5] to-[#003366]',
+      projects: 10,
+      successRate: '99%',
+      borderColor: 'border-[#90D2B5]/20'
     }
   ];
 
@@ -63,7 +76,7 @@ const OurWork = () => {
       title: 'E-commerce Platform',
       category: 'Web Development',
       description: 'A modern e-commerce platform with advanced features including AI-powered recommendations, real-time inventory management, and seamless payment processing.',
-      image: '/project1.jpg',
+      image: '/techcrop.png',
       technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
       client: 'TechCorp',
       duration: '3 months',
@@ -74,9 +87,9 @@ const OurWork = () => {
       title: 'AI-Powered Analytics Dashboard',
       category: 'AI & ML',
       description: 'An intelligent analytics platform that provides real-time insights and predictive analytics for business decision-making.',
-      image: '/project2.jpg',
+      image: 'https://res.cloudinary.com/dt2juqy9s/image/upload/v1745319822/Logo_img_rxgrwt.png',
       technologies: ['Python', 'TensorFlow', 'React', 'AWS'],
-      client: 'DataFlow Inc',
+      client: 'SwansorterAdminDashboard',
       duration: '4 months',
       results: '60% faster insights'
     },
@@ -85,9 +98,9 @@ const OurWork = () => {
       title: 'Brand Identity & Website',
       category: 'Design',
       description: 'Complete brand identity redesign including logo, visual assets, and responsive website for a growing startup.',
-      image: '/project3.jpg',
+      image: '/Logo - VertexLabs.png',
       technologies: ['Figma', 'React', 'Tailwind CSS'],
-      client: 'StartupXYZ',
+      client: 'GenZBrand',
       duration: '2 months',
       results: '200% brand recognition'
     },
@@ -96,7 +109,7 @@ const OurWork = () => {
       title: 'Digital Marketing Campaign',
       category: 'Marketing',
       description: 'Comprehensive digital marketing campaign across multiple channels with advanced targeting and optimization.',
-      image: '/project4.jpg',
+      image: '/inovatex.png',
       technologies: ['Google Ads', 'Facebook Ads', 'Analytics'],
       client: 'GrowthCo',
       duration: '6 months',
@@ -107,7 +120,7 @@ const OurWork = () => {
       title: 'Mobile App Development',
       category: 'Web Development',
       description: 'Cross-platform mobile application with offline capabilities and real-time synchronization.',
-      image: '/project5.jpg',
+      image: '/mobilefirst.png',
       technologies: ['React Native', 'Firebase', 'Redux'],
       client: 'MobileFirst',
       duration: '5 months',
@@ -118,7 +131,7 @@ const OurWork = () => {
       title: 'Machine Learning Model',
       category: 'AI & ML',
       description: 'Custom ML model for predictive maintenance in manufacturing, reducing downtime by 70%.',
-      image: '/project6.jpg',
+      image: '/swan.png',
       technologies: ['Python', 'Scikit-learn', 'Docker'],
       client: 'ManufacturePro',
       duration: '3 months',
@@ -130,14 +143,14 @@ const OurWork = () => {
     {
       title: 'ClickNgro - Complete Digital Transformation',
       description: 'A comprehensive digital transformation project that included website redesign, brand identity, and digital marketing strategy.',
-      image: '/clickngro.jpg',
+      image: '/ChatGPT Image Jul 25, 2025, 09_21_34 PM.png',
       tags: ['Branding', 'Marketing', 'Strategy'],
       results: '300% increase in online leads'
     },
     {
       title: 'Swansorter - AI-Powered Sorting System',
       description: 'An innovative AI-powered sorting system that revolutionized the client\'s manufacturing process.',
-      image: '/swansorter.jpg',
+      image: '/swan.png', // This file doesn't exist, so use '/swan.png' instead
       tags: ['AI Solutions', 'Innovation', 'Analytics'],
       results: '80% efficiency improvement'
     }
@@ -224,19 +237,16 @@ const OurWork = () => {
               >
                 <CardHeader className="pb-4">
                   <div className={`relative w-20 h-20 bg-gradient-to-r ${service.gradient} rounded-2xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 animate-glow`}>
-                    <span className="text-3xl">{service.icon}</span>
+                    {typeof service.icon === 'string' ? <span className="text-3xl">{service.icon}</span> : service.icon}
                   </div>
-                  
                   <CardTitle className="text-2xl font-bold text-white group-hover:text-[#90D2B5] transition-colors duration-300">
                     {service.title}
                   </CardTitle>
                 </CardHeader>
-                
                 <CardContent>
                   <CardDescription className="text-[#EEF2F5] text-base leading-relaxed mb-6">
                     {service.description}
                   </CardDescription>
-                  
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span className="text-[#999999] text-sm">Projects</span>
@@ -245,7 +255,7 @@ const OurWork = () => {
                     <div className="flex justify-between items-center">
                       <span className="text-[#999999] text-sm">Success Rate</span>
                       <span className="text-[#90D2B5] font-bold">{service.successRate}</span>
-                      </div>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -298,7 +308,11 @@ const OurWork = () => {
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                     <div className="aspect-video bg-gradient-to-br from-[#90D2B5] to-[#A3C7D2] rounded-xl m-6 mb-0 flex items-center justify-center animate-glow overflow-hidden">
-                      <span className="text-6xl">🚀</span>
+                      <img
+                        src={project.image || '/placeholder.svg'}
+                        alt={project.title}
+                        className="w-full h-full object-cover rounded-xl"
+                      />
                 </div>
 
                     <CardContent className="p-6">
@@ -357,7 +371,11 @@ const OurWork = () => {
             {featuredProjects.map((project, index) => (
               <Card key={index} className="card-hover gradient-border bg-[#003366]/50 border-[#90D2B5]/20 backdrop-blur-xl">
                 <div className="aspect-video bg-gradient-to-br from-[#049E8A] to-[#038A76] rounded-xl m-6 mb-0 flex items-center justify-center animate-glow overflow-hidden">
-                  <span className="text-8xl">⭐</span>
+                  <img
+                    src={project.image || '/placeholder.svg'}
+                    alt={project.title}
+                    className="w-full h-full object-cover rounded-xl"
+                  />
                 </div>
                 
                 <CardContent className="p-6">

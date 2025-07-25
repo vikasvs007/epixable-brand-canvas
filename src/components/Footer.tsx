@@ -58,10 +58,10 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-[#90D2B5]" />
                 <a 
-                  href="mailto:hello@vertexlabs.com" 
+                  href="mailto:vertexlabss@gmail.com" 
                   className="font-inter hover:text-[#90D2B5] transition-colors duration-300"
                 >
-                  hello@vertexlabs.com
+                   vertexlabss@gmail.com
                 </a>
               </div>
               <div className="flex items-center space-x-3">
@@ -81,7 +81,7 @@ const Footer = () => {
 
             {/* Social Media Links */}
             <div>
-              <h4 className="text-lg font-bold mb-4 text-gradient font-space">Follow Us</h4>
+              <h4 className="text-lg font-extrabold mb-4 text-[#90D2B5] font-space drop-shadow-md">Follow Us</h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social) => (
                   <a

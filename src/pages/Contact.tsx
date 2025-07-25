@@ -24,13 +24,13 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Mail,
-      info: 'hello@vertexlabs.com',
+      info: 'vertexlabss@gmail.com',
       description: 'Send us an email anytime',
       gradient: 'from-[#003366] to-[#004080]'
     },
     {
       icon: Phone,
-      info: '+91 6363163519',
+      info: '+91 6363163519|7259635086',
       description: 'Call us for immediate support',
       gradient: 'from-[#90D2B5] to-[#A3C7D2]'
     },

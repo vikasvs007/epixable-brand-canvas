@@ -81,7 +81,7 @@ const Home = () => {
     },
     {
       quote: "Outstanding work! They understood our vision perfectly and brought it to life with incredible precision.",
-      author: "Mrs.Savitha ramesh",
+      author: "Bhanu Prakash",
       company: "SCV Trust.",
       rating: 5,
     },
@@ -112,12 +112,12 @@ const Home = () => {
   ];
 
   const clients = [
-    { name: 'ClickNgro', logo: '/images.jpg', website: 'https://clickngro.com' },
-    { name: 'Swansorter', logo: '/swan.png', website: 'https://swansorter.com' },
-    { name: 'SCV Trust', logo: '/chayadevi.png', website: 'https://chayadevikrpete.com' },
-    { name: 'TechCorp', logo: '/images.jpg', website: 'https://techcorp.com' },
-    { name: 'InnovateX', logo: '/images.jpg', website: 'https://innovatex.com' },
-    { name: 'DigitalPro', logo: '/images.jpg', website: 'https://digitalpro.com' },
+    { name: 'ClickNgro', logo: '/ChatGPT Image Jul 25, 2025, 09_21_34 PM.png', website: 'https://www.falconebiz.com/LLP/CLICKNGRO-TECH-SOLUTIONS-LLP-ACM-0691' },
+    { name: 'Swansorter', logo: 'https://res.cloudinary.com/dt2juqy9s/image/upload/v1745319822/Logo_img_rxgrwt.png', website: 'https://swansorter.com' },
+    { name: 'SCV Trust', logo: '/Blue White Modern school Logo (1).png', website: 'https://chayadevikrpete.com' },
+    { name: 'TechCorp', logo: '/techcrop.png', website: 'https://techcorp.com' },
+    { name: 'InnovateX', logo: '/inovatex.png', website: 'https://innovatex.com' },
+    { name: 'DigitalPro', logo: '/digitalpro.png', website: 'https://www.falconebiz.com/company/DIGITALPRO-EDUTECH-OPC-PRIVATE-LIMITED-U74999DL2017OPC322571' },
   ];
 
   return (
@@ -361,7 +361,7 @@ const Home = () => {
                         alt={client.name}
                         className="absolute inset-0 w-full h-full object-cover"
                       />
-                      <div className="relative w-full bg-black/70 py-4 px-4 flex flex-col items-center rounded-b-2xl">
+                      <div className="relative w-full bg-black/50 py-4 px-4 flex flex-col items-center rounded-b-2xl">
                         <h3 className="text-base font-bold text-[#EEF2F5] font-space truncate w-full text-center drop-shadow-lg">
                           {client.name}
                         </h3>

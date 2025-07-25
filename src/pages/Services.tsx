@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, ArrowRight, CheckCircle, Code, Brain, Palette, Share2, Zap, Shield, Globe, Smartphone, BarChart3, Users, Target, Award, Star, Send } from 'lucide-react';
+import { Sparkles, ArrowRight, CheckCircle, Code, Brain, Palette, Share2, Zap, Shield, Globe, Smartphone, BarChart3, Users, Target, Award, Star, Send, MessageSquare } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 
@@ -100,6 +100,21 @@ const Services = () => {
         'Security awareness training',
         'Risk assessment and mitigation'
       ]
+    },
+    {
+      icon: MessageSquare,
+      title: 'Chatbot Development',
+      description: 'Custom AI-powered chatbots to automate support, boost engagement, and streamline business processes.',
+      gradient: 'from-[#90D2B5] to-[#003366]',
+      features: ['Conversational AI', '24/7 Customer Support', 'Lead Generation', 'Integration with Platforms', 'Custom Workflows', 'Analytics & Reporting'],
+      details: [
+        'Design and development of intelligent chatbots',
+        'Integration with websites, apps, and messaging platforms',
+        'Natural language understanding and contextual responses',
+        'Automated lead capture and qualification',
+        'Custom workflows and business logic',
+        'Analytics dashboard for monitoring and improvement'
+      ]
     }
   ];
 
@@ -140,8 +155,8 @@ const Services = () => {
     },
     {
       title: 'Professional',
-      price: '₹15,000',
-      period: '/month',
+      // price: '₹15,000',
+      // period: '/month',
       description: 'Ideal for growing businesses that need comprehensive digital solutions.',
       features: ['Full Service Package', 'Priority Support', 'Fast Delivery', 'Advanced Analytics', 'Monthly Reports'],
       popular: true,
@@ -396,7 +411,6 @@ const Services = () => {
                   <h3 className="text-3xl font-bold text-white mb-4">{plan.title}</h3>
                   <div className="mb-6">
                     <span className="text-4xl font-bold text-gradient">{plan.price}</span>
-                    {plan.period && <span className="text-[#999999] ml-2">{plan.period}</span>}
                   </div>
                   <p className="text-[#EEF2F5] mb-6 leading-relaxed">
                     {plan.description}

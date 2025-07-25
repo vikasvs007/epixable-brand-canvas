@@ -160,7 +160,7 @@ const About = () => {
               </div>
               <Card className="gradient-border bg-black/50 border-[#90D2B5]/20 backdrop-blur-xl card-hover">
                 <CardContent className="p-8 text-center">
-                  <div className="text-6xl font-bold text-gradient mb-4">2023</div>
+                  <div className="text-6xl font-bold text-gradient mb-4">2022</div>
                   <div className="text-[#EEF2F5] text-lg">Founded with big dreams</div>
                 </CardContent>
               </Card>
