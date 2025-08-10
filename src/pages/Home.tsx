@@ -68,13 +68,13 @@ const Home = () => {
 
   const testimonials = [
     {
-      quote: "vertexlabs transformed our brand identity completely. Their creative approach and attention to detail exceeded our expectations.",
+      quote: "vertexlabz transformed our brand identity completely. Their creative approach and attention to detail exceeded our expectations.",
       author: "Mounesh patter",
       company: "ClickNgro.",
       rating: 5,
     },
     {
-      quote: "The team at vertexlabs delivered exceptional results for our marketing campaign. Professional, creative, and reliable.",
+      quote: "The team at vertexlabz delivered exceptional results for our marketing campaign. Professional, creative, and reliable.",
       author: "Vinayak",
       company: "Swansorter.",
       rating: 5,
@@ -445,7 +445,7 @@ const Home = () => {
                     {/* Contact Methods */}
                     <div className="space-y-6">
                       <a
-                        href="mailto:hello@vertexlabs.com"
+                        href="mailto:hello@vertexlabz.com"
                         className="group flex items-center space-x-6 p-6 glass-effect rounded-2xl hover:bg-[#90D2B5]/10 transition-all duration-300 hover:scale-105 border border-[#90D2B5]/20 hover:border-[#90D2B5]/40"
                       >
                         <div className="w-16 h-16 bg-gradient-to-r from-[#003366] to-[#004080] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -453,7 +453,7 @@ const Home = () => {
                         </div>
                         <div className="flex-1">
                           <h3 className="text-xl font-bold text-white group-hover:text-[#90D2B5] transition-colors duration-300 font-space">Email Us</h3>
-                          <p className="text-[#EEF2F5] font-inter">hello@vertexlabs.com</p>
+                          <p className="text-[#EEF2F5] font-inter">hello@vertexlabz.com</p>
                         </div>
                         <ArrowRight className="w-6 h-6 text-[#90D2B5] ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </a>

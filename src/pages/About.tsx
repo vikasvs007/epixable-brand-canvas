@@ -45,7 +45,7 @@ const About = () => {
             src="/about-illustration.svg"
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] max-w-none opacity-20 pointer-events-none select-none hidden md:block"
             style={{ zIndex: 1 }}
-            alt="About VertexLabs Illustration"
+            alt="About VertexLabz Illustration"
           />
           <div className="absolute w-96 h-96 bg-[#90D2B5]/20 rounded-full blur-3xl animate-glow top-20 right-20"></div>
           <div className="absolute bottom-20 left-20 w-64 h-64 bg-[#A3C7D2]/10 rounded-full blur-2xl animate-float"></div>
@@ -59,12 +59,14 @@ const About = () => {
                 <span className="text-sm font-semibold text-white">About Our Journey</span>
               </div>
               
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                About <span className="text-gradient">VertexLabs ✨</span>
+              <h1 className="text-5xl md:text-7xl font-bold text-center mb-8">
+                About <span className="text-gradient">VertexLabz ✨</span>
               </h1>
               
-              <p className="text-xl text-[#EEF2F5] mb-8 leading-relaxed">
-              We are a full-service digital agency focused on web development, AI/ML solutions, and creative design to help businesses grow and innovate.
+              <p className="text-xl text-[#EEF2F5] leading-relaxed mb-8 max-w-4xl mx-auto font-inter">
+                VertexLabz was founded with a simple yet powerful vision: to help businesses tell their stories
+                through innovative design and strategic thinking. We believe that every brand has a unique
+                narrative waiting to be discovered and shared with the world.
               </p>
               
               <div className="space-y-4 text-[#EEF2F5]">
@@ -149,7 +151,7 @@ const About = () => {
               <div>
                 <h3 className="text-3xl font-extrabold text-white mb-6 drop-shadow-glow">The Beginning</h3>
                 <p className="text-[#EEF2F5] mb-4 text-lg leading-relaxed">
-                  VertexLabs was founded with a simple yet powerful vision: to help businesses tell their stories 
+                  VertexLabz was founded with a simple yet powerful vision: to help businesses tell their stories 
                   in ways that truly connect with their audiences. We started as a small team of passionate 
                   creatives and strategists.
                 </p>

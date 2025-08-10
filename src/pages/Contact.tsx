@@ -24,9 +24,9 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Mail,
-      info: 'vertexlabss@gmail.com',
-      description: 'Send us an email anytime',
-      gradient: 'from-[#003366] to-[#004080]'
+      title: 'Email Us',
+      info: 'vertexlabz@gmail.com',
+      link: 'mailto:vertexlabz@gmail.com'
     },
     {
       icon: Phone,
@@ -413,7 +413,7 @@ const Contact = () => {
               Still have questions? We're here to help!
             </p>
             <a
-              href="mailto:hello@vertexlabs.com"
+              href="mailto:hello@vertexlabz.com"
               className="inline-flex items-center text-[#90D2B5] hover:text-[#A3C7D2] transition-colors duration-300 font-semibold font-space"
             >
               Contact us directly

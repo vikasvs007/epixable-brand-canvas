@@ -19,11 +19,11 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { name: 'Facebook', href: 'https://facebook.com/vertexlabs', icon: Facebook },
-    { name: 'Instagram', href: 'https://instagram.com/vertexlabs', icon: Instagram },
-    { name: 'LinkedIn', href: 'https://linkedin.com/company/vertexlabs', icon: Linkedin },
-    { name: 'Twitter', href: 'https://twitter.com/vertexlabs', icon: Twitter },
-    { name: 'YouTube', href: 'https://youtube.com/@vertexlabs', icon: Youtube },
+    { name: 'Facebook', href: 'https://facebook.com/vertexlabz', icon: Facebook },
+    { name: 'Instagram', href: 'https://instagram.com/vertexlabz', icon: Instagram },
+    { name: 'LinkedIn', href: 'https://linkedin.com/company/vertexlabz', icon: Linkedin },
+    { name: 'Twitter', href: 'https://twitter.com/vertexlabz', icon: Twitter },
+    { name: 'YouTube', href: 'https://youtube.com/@vertexlabz', icon: Youtube },
   ];
 
   return (
@@ -41,12 +41,12 @@ const Footer = () => {
             <Link to="/" className="flex items-center space-x-4 group mb-6">
               <img
                 src="/Logo - VertexLabs.jpg"
-                alt="Vertex Labs Logo"
+                alt="VertexLabz Logo"
                 className="h-16 w-16 object-contain rounded-full border-2 border-[#90D2B5] shadow-md"
                 style={{ background: 'transparent' }}
               />
               <span className="text-3xl font-bold text-gradient font-playfair">
-                VertexLabs
+                VertexLabz
               </span>
             </Link>
             
@@ -58,10 +58,10 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-[#90D2B5]" />
                 <a 
-                  href="mailto:vertexlabss@gmail.com" 
+                  href="mailto:vertexlabz@gmail.com" 
                   className="font-inter hover:text-[#90D2B5] transition-colors duration-300"
                 >
-                   vertexlabss@gmail.com
+                   vertexlabz@gmail.com
                 </a>
               </div>
               <div className="flex items-center space-x-3">
@@ -133,7 +133,7 @@ const Footer = () => {
         <div className="border-t border-[#90D2B5]/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-[#999999] text-center md:text-left font-inter">
-              &copy; 2025 VertexLabs. All rights reserved.
+              &copy; 2025 VertexLabz. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link to="#" className="text-[#999999] hover:text-[#90D2B5] transition-colors duration-300 font-inter">Privacy Policy</Link>

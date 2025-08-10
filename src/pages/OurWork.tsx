@@ -95,12 +95,12 @@ const OurWork = () => {
     },
     {
       id: 3,
-      title: 'Brand Identity & Website',
-      category: 'Design',
-      description: 'Complete brand identity redesign including logo, visual assets, and responsive website for a growing startup.',
+      title: 'VertexLabz Brand Identity',
+      category: 'Branding',
+      description: 'Complete brand identity redesign including logo, color palette, typography, and brand guidelines.',
       image: '/Logo - VertexLabs.png',
-      technologies: ['Figma', 'React', 'Tailwind CSS'],
-      client: 'GenZBrand',
+      technologies: ["Figma", "Adobe Creative Suite", "Brand Strategy"],
+      client: 'VertexLabz',
       duration: '2 months',
       results: '200% brand recognition'
     },

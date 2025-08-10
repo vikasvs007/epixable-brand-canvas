@@ -67,8 +67,9 @@ const Header = () => {
                 <div className="w-full h-full bg-black rounded-full flex items-center justify-center relative overflow-hidden">
                   <img
                     src="/Logo - VertexLabs.jpg"
-                    alt="Vertex Labs Logo"
-                    className="w-10 h-10 object-contain rounded-full group-hover:scale-110 transition-transform duration-300"
+                    alt="VertexLabz Logo"
+                    className="h-12 w-12 object-contain rounded-full border-2 border-[#90D2B5] shadow-md"
+                    style={{ background: 'transparent' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-br from-[#90D2B5]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
                 </div>
@@ -96,7 +97,7 @@ const Header = () => {
                     </span>
                   </span>
                 </span>
-                <span className="tracking-wider">L A B S</span>
+                <span className="tracking-wider">L A B Z</span>
               </span>
               
               {/* Animated underline */}
