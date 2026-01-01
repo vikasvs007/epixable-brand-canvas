@@ -26,25 +26,27 @@ const Contact = () => {
       icon: Mail,
       title: 'Email Us',
       info: 'vertexlabz@gmail.com',
-      link: 'mailto:vertexlabz@gmail.com'
+      link: 'mailto:vertexlabz@gmail.com',
+      description: 'Send us an email',
+      gradient: 'from-primary to-primary/80'
     },
     {
       icon: Phone,
       info: '+91 6363163519|7259635086',
       description: 'Call us for immediate support',
-      gradient: 'from-[#90D2B5] to-[#A3C7D2]'
+      gradient: 'from-accent to-accent/80'
     },
     {
       icon: MapPin,
       info: 'Mysore, India',
       description: 'Visit our office',
-      gradient: 'from-[#049E8A] to-[#038A76]'
+      gradient: 'from-primary to-accent'
     },
     {
       icon: Clock,
       info: 'Mon - Fri, 9AM - 6PM',
       description: 'Business hours',
-      gradient: 'from-[#A3C7D2] to-[#8FB8C5]'
+      gradient: 'from-accent to-primary'
     }
   ];
 
@@ -70,27 +72,27 @@ const Contact = () => {
   const faqs = [
     {
       question: "What is your typical project timeline?",
-      answer: "Project timelines vary based on complexity and scope. Simple websites typically take 2-4 weeks, while complex applications can take 2-6 months. We'll provide a detailed timeline during our initial consultation."
+      answer: "Project timelines vary based on complexity and scope. Simple websites typically take 2-4 weeks, while complex applications can take 2-6 months."
     },
     {
       question: "Do you provide ongoing support after project completion?",
-      answer: "Yes, we offer various support packages including maintenance, updates, and technical support. We believe in building long-term relationships with our clients."
+      answer: "Yes, we offer various support packages including maintenance, updates, and technical support."
     },
     {
       question: "What technologies do you specialize in?",
-      answer: "We work with modern technologies including React, Next.js, Node.js, Python, AI/ML frameworks, and cloud platforms. We choose the best technology stack for each project's specific needs."
+      answer: "We work with modern technologies including React, Next.js, Node.js, Python, AI/ML frameworks, and cloud platforms."
     },
     {
       question: "How do you handle project communication?",
-      answer: "We maintain regular communication through scheduled meetings, progress reports, and dedicated project management tools. You'll have direct access to your project team throughout the process."
+      answer: "We maintain regular communication through scheduled meetings, progress reports, and dedicated project management tools."
     },
     {
       question: "What is your payment structure?",
-      answer: "We typically require a 50% deposit to begin work, with the remaining balance due upon project completion. For larger projects, we can arrange milestone-based payments."
+      answer: "We typically require a 50% deposit to begin work, with the remaining balance due upon project completion."
     },
     {
       question: "Do you work with international clients?",
-      answer: "Absolutely! We have experience working with clients from around the world. We can accommodate different time zones and provide remote collaboration tools for seamless communication."
+      answer: "Absolutely! We have experience working with clients from around the world."
     }
   ];
 
@@ -137,60 +139,53 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-black min-h-screen">
+    <div className="bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 lg:py-32 bg-gradient-to-br from-black via-[#003366]/20 to-black text-white relative overflow-hidden">
+      <section className="py-20 lg:py-32 bg-gradient-to-br from-white via-secondary to-white text-foreground relative overflow-hidden">
         {/* Background elements */}
         <div className="absolute inset-0">
           <img
             src="/contact-illustration.svg"
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] max-w-none opacity-20 pointer-events-none select-none hidden md:block"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] max-w-none opacity-10 pointer-events-none select-none hidden md:block"
             style={{ zIndex: 1 }}
             alt="Contact Illustration"
           />
-          <div className="absolute top-20 left-1/4 w-32 h-32 bg-[#90D2B5]/10 rounded-full blur-2xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-1/4 w-48 h-48 bg-[#A3C7D2]/10 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute top-20 left-1/4 w-32 h-32 bg-accent/10 rounded-full blur-2xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-1/4 w-48 h-48 bg-primary/5 rounded-full blur-3xl animate-float"></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
           <div ref={heroRef} className="scroll-reveal">
-            <div className="inline-flex items-center px-6 py-3 bg-white/5 backdrop-blur-xl rounded-full mb-8 border border-[#90D2B5]/20 animate-fade-in-up">
-              <Sparkles className="w-5 h-5 mr-3 text-[#90D2B5]" />
-              <span className="text-sm font-semibold text-white">Get In Touch</span>
+            <div className="inline-flex items-center px-6 py-3 bg-primary/10 backdrop-blur-xl rounded-full mb-8 border border-accent/20 animate-fade-in-up">
+              <Sparkles className="w-5 h-5 mr-3 text-accent" />
+              <span className="text-sm font-semibold text-foreground">Get In Touch</span>
             </div>
-            {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
+
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight animate-fade-in-up">
               Let's Start
               <span className="block text-gradient mt-4">
-                Something Amazing ✨
+                Something Amazing
               </span>
             </h1>
-                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
 
-            
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-[#EEF2F5] animate-fade-in-up font-inter leading-relaxed">
-              Ready to transform your business? We're here to help you bring your vision to life. 
-              Let's discuss your project and create something extraordinary together.
+            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-muted-foreground animate-fade-in-up font-inter leading-relaxed">
+              Ready to transform your business? We're here to help you bring your vision to life.
             </p>
           </div>
         </div>
       </section>
-                              {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
-
 
       {/* Contact Information */}
-      <section className="py-20 bg-gradient-to-b from-black to-[#003366]/10">
+      <section className="py-20 bg-gradient-to-b from-white to-secondary/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
               Get In Touch
             </h2>
-            <p className="text-xl text-[#EEF2F5] max-w-3xl mx-auto leading-relaxed">
-              Choose your preferred way to reach us. We're here to help and answer any questions you may have.
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Choose your preferred way to reach us. We're here to help and answer any questions.
             </p>
           </div>
-                                  {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
-
 
           <div ref={contactInfoRef} className="scroll-reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {contactInfo.map((item, index) => {
@@ -198,40 +193,38 @@ const Contact = () => {
               return (
                 <div
                   key={index}
-                  className="glass-effect rounded-2xl p-8 text-center card-hover animate-fade-in-up border border-[#90D2B5]/20"
+                  className="bg-white rounded-2xl p-8 text-center card-hover animate-fade-in-up border border-border shadow-lg"
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
                   <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${item.gradient} rounded-xl text-white mb-6 animate-glow`}>
                     <Icon className="w-8 h-8" />
                   </div>
-                  <p className="text-lg text-[#90D2B5] font-semibold mb-2 font-inter">{item.info}</p>
-                  <p className="text-[#999999] font-inter">{item.description}</p>
+                  <p className="text-lg text-accent font-semibold mb-2 font-inter">{item.info}</p>
+                  <p className="text-muted-foreground font-inter">{item.description}</p>
                 </div>
               );
             })}
           </div>
         </div>
       </section>
-                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
-
 
       {/* Contact Form */}
-      <section className="py-20 bg-black">
+      <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
               Send Us a Message
             </h2>
-            <p className="text-xl text-[#EEF2F5] font-inter">
+            <p className="text-xl text-muted-foreground font-inter">
               Tell us about your project and we'll get back to you within 24 hours.
             </p>
           </div>
 
           <div ref={formRef} className="scroll-reveal">
-            <form onSubmit={handleSubmit} className="glass-effect rounded-2xl p-8 md:p-12 border border-[#90D2B5]/20 animate-fade-in-up">
+            <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 md:p-12 border border-border animate-fade-in-up shadow-xl">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-[#EEF2F5] mb-2 font-space">
+                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2 font-space">
                     Full Name *
                   </label>
                   <input
@@ -241,14 +234,13 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-[#003366]/50 border border-[#90D2B5]/30 rounded-lg focus:ring-2 focus:ring-[#90D2B5] focus:border-transparent outline-none transition-all duration-300 text-white placeholder-[#999999] font-inter"
+                    className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all duration-300 text-foreground placeholder-muted-foreground font-inter"
                     placeholder="Enter your full name"
                   />
                 </div>
 
-
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-[#EEF2F5] mb-2 font-space">
+                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2 font-space">
                     Email Address *
                   </label>
                   <input
@@ -258,16 +250,13 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-[#003366]/50 border border-[#90D2B5]/30 rounded-lg focus:ring-2 focus:ring-[#90D2B5] focus:border-transparent outline-none transition-all duration-300 text-white placeholder-[#999999] font-inter"
+                    className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all duration-300 text-foreground placeholder-muted-foreground font-inter"
                     placeholder="Enter your email address"
                   />
                 </div>
-                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
-                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
-
 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-[#EEF2F5] mb-2 font-space">
+                  <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2 font-space">
                     Phone Number
                   </label>
                   <input
@@ -276,15 +265,13 @@ const Contact = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-[#003366]/50 border border-[#90D2B5]/30 rounded-lg focus:ring-2 focus:ring-[#90D2B5] focus:border-transparent outline-none transition-all duration-300 text-white placeholder-[#999999] font-inter"
+                    className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all duration-300 text-foreground placeholder-muted-foreground font-inter"
                     placeholder="Enter your phone number"
                   />
                 </div>
-                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
-                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
 
                 <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-[#EEF2F5] mb-2 font-space">
+                  <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2 font-space">
                     Company Name
                   </label>
                   <input
@@ -293,14 +280,13 @@ const Contact = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-[#003366]/50 border border-[#90D2B5]/30 rounded-lg focus:ring-2 focus:ring-[#90D2B5] focus:border-transparent outline-none transition-all duration-300 text-white placeholder-[#999999] font-inter"
+                    className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all duration-300 text-foreground placeholder-muted-foreground font-inter"
                     placeholder="Enter your company name"
                   />
                 </div>
-                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
 
                 <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-[#EEF2F5] mb-2 font-space">
+                  <label htmlFor="service" className="block text-sm font-medium text-foreground mb-2 font-space">
                     Service Interested In
                   </label>
                   <select
@@ -308,21 +294,19 @@ const Contact = () => {
                     name="service"
                     value={formData.service}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-[#003366]/50 border border-[#90D2B5]/30 rounded-lg focus:ring-2 focus:ring-[#90D2B5] focus:border-transparent outline-none transition-all duration-300 text-white font-inter"
+                    className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all duration-300 text-foreground font-inter"
                   >
-                    <option value="" className="bg-[#003366]">Select a service</option>
+                    <option value="" className="bg-white">Select a service</option>
                     {services.map((service) => (
-                      <option key={service} value={service} className="bg-[#003366]">
+                      <option key={service} value={service} className="bg-white">
                         {service}
                       </option>
                     ))}
                   </select>
                 </div>
-                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
-                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
 
                 <div>
-                  <label htmlFor="budget" className="block text-sm font-medium text-[#EEF2F5] mb-2 font-space">
+                  <label htmlFor="budget" className="block text-sm font-medium text-foreground mb-2 font-space">
                     Budget Range
                   </label>
                   <select
@@ -330,22 +314,20 @@ const Contact = () => {
                     name="budget"
                     value={formData.budget}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-[#003366]/50 border border-[#90D2B5]/30 rounded-lg focus:ring-2 focus:ring-[#90D2B5] focus:border-transparent outline-none transition-all duration-300 text-white font-inter"
+                    className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all duration-300 text-foreground font-inter"
                   >
-                    <option value="" className="bg-[#003366]">Select budget range</option>
+                    <option value="" className="bg-white">Select budget range</option>
                     {budgetRanges.map((range) => (
-                      <option key={range} value={range} className="bg-[#003366]">
+                      <option key={range} value={range} className="bg-white">
                         {range}
                       </option>
                     ))}
                   </select>
                 </div>
               </div>
-                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
-                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
 
               <div className="mb-8">
-                <label htmlFor="message" className="block text-sm font-medium text-[#EEF2F5] mb-2 font-space">
+                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2 font-space">
                   Project Details *
                 </label>
                 <textarea
@@ -355,21 +337,21 @@ const Contact = () => {
                   onChange={handleInputChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 bg-[#003366]/50 border border-[#90D2B5]/30 rounded-lg focus:ring-2 focus:ring-[#90D2B5] focus:border-transparent outline-none transition-all duration-300 resize-none text-white placeholder-[#999999] font-inter"
+                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all duration-300 resize-none text-foreground placeholder-muted-foreground font-inter"
                   placeholder="Tell us about your project, goals, and any specific requirements..."
                 />
               </div>
 
               {submitStatus === 'success' && (
-                <div className="mb-6 text-green-400 font-semibold text-center">Thank you! Your message has been sent.</div>
+                <div className="mb-6 text-accent font-semibold text-center">Thank you! Your message has been sent.</div>
               )}
               {submitStatus === 'error' && (
-                <div className="mb-6 text-red-400 font-semibold text-center">Something went wrong. Please try again.</div>
+                <div className="mb-6 text-destructive font-semibold text-center">Something went wrong. Please try again.</div>
               )}
               <div className="text-center">
                 <button
                   type="submit"
-                  className="btn-orange px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 inline-flex items-center font-space"
+                  className="btn-primary px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 inline-flex items-center font-space"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? 'Sending...' : (<><span>Send Message</span><Send className="ml-2 w-5 h-5" /></>)}
@@ -379,19 +361,16 @@ const Contact = () => {
           </div>
         </div>
       </section>
-                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
-                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
-                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
 
       {/* FAQ Section */}
-      <section className="py-20 bg-black">
+      <section className="py-20 bg-gradient-to-b from-white to-secondary/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
               Frequently Asked Questions
             </h2>
-            <p className="text-xl text-[#EEF2F5] max-w-3xl mx-auto leading-relaxed">
-              Find answers to common questions about our services, process, and what to expect when working with us.
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Find answers to common questions about our services, process, and what to expect.
             </p>
           </div>
 
@@ -399,33 +378,42 @@ const Contact = () => {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="glass-effect rounded-xl p-6 card-hover animate-fade-in-up border border-[#90D2B5]/20"
+                className="bg-white rounded-2xl p-8 border border-border animate-fade-in-up shadow-lg"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <h3 className="text-xl font-bold text-white mb-3 font-space">{faq.question}</h3>
-                <p className="text-[#EEF2F5] font-inter">{faq.answer}</p>
+                <h3 className="text-xl font-bold text-foreground mb-4 font-space">{faq.question}</h3>
+                <p className="text-muted-foreground leading-relaxed font-inter">{faq.answer}</p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="text-center mt-12">
-            <p className="text-[#EEF2F5] mb-6 font-inter">
-              Still have questions? We're here to help!
-            </p>
-            <a
-              href="mailto:hello@vertexlabz.com"
-              className="inline-flex items-center text-[#90D2B5] hover:text-[#A3C7D2] transition-colors duration-300 font-semibold font-space"
-            >
-              Contact us directly
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </a>
-          </div>
+      {/* CTA Section */}
+      <section className="py-24 bg-gradient-to-r from-primary via-primary/90 to-primary text-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 w-48 h-48 bg-accent/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 right-10 w-64 h-64 bg-accent/10 rounded-full blur-3xl animate-float"></div>
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-white">
+            Let's Build Something Great
+          </h2>
+          <p className="text-xl mb-12 max-w-3xl mx-auto text-white/80 leading-relaxed">
+            Ready to take your business to the next level? We're here to help you succeed.
+          </p>
+          <a
+            href="mailto:vertexlabz@gmail.com"
+            className="bg-white text-primary hover:bg-accent hover:text-white px-12 py-6 rounded-xl font-bold text-xl inline-flex items-center transform transition-all duration-300 hover:scale-105"
+          >
+            Email Us Now
+            <ArrowRight className="ml-4 w-7 h-7" />
+          </a>
         </div>
       </section>
     </div>
   );
 };
-                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
-                        {/* //// sfdahs asuyfajshbf jsbfjhabsfjbsafj jhsabfjhbasfbasf jhasbfjh */}
 
 export default Contact;
