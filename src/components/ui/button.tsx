@@ -5,19 +5,19 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow-md hover:shadow-xl",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] active:shadow-sm",
   {
     variants: {
       variant: {
-        default: "bg-gradient-to-r from-[#003366] to-[#90D2B5] text-white hover:from-[#004080] hover:to-[#A3C7D2]",
+        default: "bg-gradient-to-r from-[#003366] to-[#90D2B5] text-white hover:from-[#004080] hover:to-[#A3C7D2] hover:brightness-110",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90 hover:brightness-110",
         outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-full",
+          "border border-input bg-background hover:bg-accent hover:text-accent-foreground hover:border-primary/50 rounded-full",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-full",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:brightness-105 rounded-full",
+        ghost: "hover:bg-accent hover:text-accent-foreground shadow-none hover:shadow-none",
+        link: "text-primary underline-offset-4 hover:underline shadow-none hover:shadow-none hover:scale-100",
       },
       size: {
         default: "h-10 px-4 py-2",
