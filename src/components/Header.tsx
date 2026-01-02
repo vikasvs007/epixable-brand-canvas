@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Sparkles, ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,44 +49,82 @@ const Header = () => {
     };
   }, [isMenuOpen]);
 
-  const handleDropdownToggle = (itemName: string) => {
-    setActiveDropdown(activeDropdown === itemName ? null : itemName);
+  // Close menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
+  const menuVariants = {
+    closed: {
+      opacity: 0,
+      x: '100%',
+      transition: {
+        duration: 0.3,
+        ease: 'easeInOut' as const,
+      },
+    },
+    open: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.4,
+        ease: 'easeOut' as const,
+      },
+    },
+  };
+
+  const itemVariants = {
+    closed: { opacity: 0, x: 50 },
+    open: (i: number) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.4,
+        ease: 'easeOut' as const,
+      },
+    }),
   };
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       isScrolled 
-        ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-border' 
-        : 'bg-white/80 backdrop-blur-sm'
+        ? 'bg-background/95 backdrop-blur-xl shadow-lg shadow-primary/5 border-b border-border' 
+        : 'bg-background/80 backdrop-blur-sm'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-16 sm:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group relative z-50">
-            <div className="relative">
-              <div className="w-14 h-14 bg-gradient-to-br from-primary to-accent rounded-full p-0.5 shadow-lg group-hover:shadow-accent/25 transition-all duration-300">
-                <div className="w-full h-full bg-white rounded-full flex items-center justify-center relative overflow-hidden">
+          <Link to="/" className="flex items-center space-x-2 sm:space-x-3 group relative z-50">
+            <motion.div 
+              className="relative"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <div className="w-10 h-10 sm:w-14 sm:h-14 bg-gradient-to-br from-primary to-accent rounded-full p-0.5 shadow-lg group-hover:shadow-accent/25 transition-all duration-300">
+                <div className="w-full h-full bg-background rounded-full flex items-center justify-center relative overflow-hidden">
                   <img
                     src="/Logo - VertexLabs.jpg"
                     alt="VertexLabz Logo"
-                    className="h-12 w-12 object-contain rounded-full border-2 border-accent shadow-md"
+                    className="h-8 w-8 sm:h-12 sm:w-12 object-contain rounded-full border-2 border-accent shadow-md"
                   />
                   <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
                 </div>
               </div>
               <div className="absolute -inset-2 bg-accent/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
+            </motion.div>
             
             <div className="relative flex items-center">
-              <span className="flex items-center space-x-0.5 text-2xl sm:text-3xl font-montserrat font-bold text-primary group-hover:text-accent transition-colors duration-300">
-                <span className="tracking-wider">V E R T E</span>
-                <span className="relative inline-block w-6 h-6 sm:w-7 sm:h-7 align-middle mx-1">
+              <span className="flex items-center space-x-0.5 text-lg sm:text-2xl lg:text-3xl font-montserrat font-bold text-primary group-hover:text-accent transition-colors duration-300">
+                <span className="tracking-wide sm:tracking-wider hidden xs:inline">VERTE</span>
+                <span className="tracking-wide sm:tracking-wider xs:hidden">VX</span>
+                <span className="relative inline-block w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 align-middle mx-0.5 sm:mx-1 hidden xs:inline-block">
                   <span className="absolute inset-0 flex items-center justify-center">
-                    <span className="block w-4 h-4 sm:w-5 sm:h-5 bg-gradient-to-br from-primary to-accent rotate-45 rounded-sm group-hover:rotate-[225deg] transition-transform duration-500 shadow-lg"></span>
+                    <span className="block w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 bg-gradient-to-br from-primary to-accent rotate-45 rounded-sm group-hover:rotate-[225deg] transition-transform duration-500 shadow-lg"></span>
                   </span>
                   <span className="absolute inset-0 flex items-center justify-center">
                     <span
-                      className="text-white text-4xl sm:text-5xl font-playfair font-extrabold drop-shadow-lg group-hover:scale-110 transition-transform duration-300"
+                      className="text-primary-foreground text-2xl sm:text-4xl lg:text-5xl font-playfair font-extrabold drop-shadow-lg group-hover:scale-110 transition-transform duration-300"
                       style={{
                         fontFamily: "'Playfair Display', serif",
                         transform: 'rotate(-8deg) skewY(4deg)',
@@ -96,15 +135,11 @@ const Header = () => {
                     </span>
                   </span>
                 </span>
-                <span className="tracking-wider">L A B Z</span>
+                <span className="tracking-wide sm:tracking-wider hidden xs:inline">LABZ</span>
               </span>
               
               {/* Animated underline */}
-              <div className="absolute -bottom-2 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-500"></div>
-              
-              {/* Floating particles */}
-              <div className="absolute -top-1 -right-1 w-1 h-1 bg-accent rounded-full animate-ping opacity-60 group-hover:opacity-100"></div>
-              <div className="absolute -bottom-1 -left-1 w-1 h-1 bg-primary rounded-full animate-ping opacity-60 group-hover:opacity-100" style={{animationDelay: '1s'}}></div>
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-500"></div>
             </div>
           </Link>
 
@@ -115,56 +150,68 @@ const Header = () => {
                 {item.dropdown ? (
                   <div className="relative">
                     <button
-                      className={`flex items-center px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 ${
+                      className={`flex items-center px-4 xl:px-6 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 ${
                         isActive(item.href)
                           ? 'text-accent bg-accent/10 border border-accent/20'
                           : 'text-foreground hover:text-accent hover:bg-secondary border border-transparent hover:border-accent/20'
-                      } card-hover`}
+                      }`}
                       onMouseEnter={() => setActiveDropdown(item.name)}
                       onMouseLeave={() => setActiveDropdown(null)}
                     >
                       {item.name}
-                      <ChevronDown className={`ml-2 w-4 h-4 transition-transform duration-300 ${
+                      <ChevronDown className={`ml-1.5 w-4 h-4 transition-transform duration-300 ${
                         activeDropdown === item.name ? 'rotate-180' : ''
                       }`} />
                     </button>
                     
                     {/* Dropdown Menu */}
-                    <div 
-                      className={`absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-xl border border-border rounded-xl shadow-2xl transition-all duration-300 ${
-                        activeDropdown === item.name 
-                          ? 'opacity-100 visible translate-y-0' 
-                          : 'opacity-0 invisible -translate-y-2'
-                      }`}
-                      onMouseEnter={() => setActiveDropdown(item.name)}
-                      onMouseLeave={() => setActiveDropdown(null)}
-                    >
-                      <div className="p-2">
-                        {item.dropdown.map((dropdownItem, index) => (
-                          <Link
-                            key={dropdownItem.name}
-                            to={dropdownItem.href}
-                            className="block px-4 py-3 text-sm text-foreground hover:text-accent hover:bg-accent/10 rounded-lg transition-all duration-300 border border-transparent hover:border-accent/20"
-                            style={{ animationDelay: `${index * 50}ms` }}
-                          >
-                            {dropdownItem.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
+                    <AnimatePresence>
+                      {activeDropdown === item.name && (
+                        <motion.div 
+                          initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-0 mt-2 w-64 bg-background/95 backdrop-blur-xl border border-border rounded-xl shadow-2xl shadow-primary/10 overflow-hidden"
+                          onMouseEnter={() => setActiveDropdown(item.name)}
+                          onMouseLeave={() => setActiveDropdown(null)}
+                        >
+                          <div className="p-2">
+                            {item.dropdown.map((dropdownItem, index) => (
+                              <motion.div
+                                key={dropdownItem.name}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: index * 0.05 }}
+                              >
+                                <Link
+                                  to={dropdownItem.href}
+                                  className="block px-4 py-3 text-sm text-foreground hover:text-accent hover:bg-accent/10 rounded-lg transition-all duration-300 border border-transparent hover:border-accent/20"
+                                >
+                                  {dropdownItem.name}
+                                </Link>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 ) : (
                   <Link
                     to={item.href}
-                    className={`relative px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 ${
+                    className={`relative px-4 xl:px-6 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 ${
                       isActive(item.href)
                         ? 'text-accent bg-accent/10 border border-accent/20'
                         : 'text-foreground hover:text-accent hover:bg-secondary border border-transparent hover:border-accent/20'
-                    } card-hover`}
+                    }`}
                   >
                     {item.name}
                     {isActive(item.href) && (
-                      <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+                      <motion.div 
+                        layoutId="activeIndicator"
+                        className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-accent rounded-full"
+                      />
                     )}
                   </Link>
                 )}
@@ -172,125 +219,146 @@ const Header = () => {
             ))}
             
             {/* CTA Button */}
-            <Link
-              to="/contact"
-              className="ml-4 btn-primary px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 inline-flex items-center"
-            >
-              <Sparkles className="w-4 h-4 mr-2" />
-              Get Started
-            </Link>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link
+                to="/contact"
+                className="ml-4 btn-primary px-5 xl:px-6 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 inline-flex items-center"
+              >
+                <Sparkles className="w-4 h-4 mr-2" />
+                Get Started
+              </Link>
+            </motion.div>
           </nav>
 
           {/* Mobile menu button */}
-          <button
-            className="lg:hidden relative p-3 rounded-xl hover:bg-accent/10 transition-all duration-300 border border-transparent hover:border-accent/20 z-50"
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            className="lg:hidden relative p-2.5 rounded-xl hover:bg-accent/10 transition-all duration-300 border border-transparent hover:border-accent/20 z-50"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
           >
             <div className="relative w-6 h-6">
-              <Menu 
-                size={24} 
-                className={`absolute text-foreground transition-all duration-500 ${
-                  isMenuOpen ? 'opacity-0 rotate-180 scale-50' : 'opacity-100 rotate-0 scale-100'
-                }`} 
+              <motion.div
+                animate={isMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="absolute top-1 left-0 w-6 h-0.5 bg-foreground rounded-full"
               />
-              <X 
-                size={24} 
-                className={`absolute text-accent transition-all duration-500 ${
-                  isMenuOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-180 scale-50'
-                }`} 
+              <motion.div
+                animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+                transition={{ duration: 0.2 }}
+                className="absolute top-3 left-0 w-6 h-0.5 bg-foreground rounded-full"
+              />
+              <motion.div
+                animate={isMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="absolute top-5 left-0 w-6 h-0.5 bg-foreground rounded-full"
               />
             </div>
-          </button>
+          </motion.button>
+        </div>
+      </div>
 
-          {/* Mobile Navigation Overlay */}
-          <div className={`lg:hidden fixed inset-0 z-[9999] bg-white shadow-2xl border-t-4 border-accent transition-all duration-500 ${
-            isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-          }`}>
-            {/* Always visible close button in top-right */}
-            <button
-              className="absolute top-6 right-6 p-3 rounded-full bg-accent hover:bg-accent/80 text-white shadow-lg z-[10000] transition-all duration-300 border-2 border-primary"
-              onClick={() => setIsMenuOpen(false)}
-              aria-label="Close menu"
-              style={{fontSize: 24, lineHeight: 1}}
-            >
-              <X size={28} />
-            </button>
-            <div className="flex flex-col justify-center items-center min-h-screen px-6">
-              <nav className="flex flex-col space-y-8 text-center w-full max-w-xs mx-auto mt-16">
+      {/* Mobile Navigation Overlay */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={menuVariants}
+            className="lg:hidden fixed inset-0 z-40 bg-background"
+          >
+            {/* Decorative background */}
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute top-20 right-10 w-64 h-64 bg-accent/10 rounded-full blur-3xl" />
+              <div className="absolute bottom-20 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+            </div>
+
+            <div className="relative flex flex-col justify-center items-center min-h-screen px-6 pt-20">
+              <nav className="flex flex-col space-y-4 text-center w-full max-w-sm">
                 {navigation.map((item, index) => (
-                  <div key={item.name}>
+                  <motion.div
+                    key={item.name}
+                    custom={index}
+                    variants={itemVariants}
+                    initial="closed"
+                    animate="open"
+                  >
                     {item.dropdown ? (
                       <div>
                         <button
-                          onClick={() => handleDropdownToggle(item.name)}
-                          className={`flex items-center justify-center w-full text-2xl font-bold rounded-lg px-4 py-3 transition-all duration-500 transform border-2 ${
+                          onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
+                          className={`flex items-center justify-center w-full text-xl sm:text-2xl font-bold rounded-2xl px-6 py-4 transition-all duration-300 ${
                             isActive(item.href)
-                              ? 'text-accent scale-110 bg-accent/10 border-accent'
-                              : 'text-foreground hover:text-accent hover:scale-105 bg-secondary border-border'
+                              ? 'text-accent bg-accent/10 border-2 border-accent'
+                              : 'text-foreground hover:text-accent bg-secondary/50 border-2 border-border hover:border-accent/30'
                           }`}
-                          style={{ 
-                            animationDelay: `${index * 100}ms`,
-                            animation: isMenuOpen ? 'fadeInUp 0.6s ease-out forwards' : 'none'
-                          }}
                         >
                           {item.name}
-                          <ChevronDown className={`ml-2 w-6 h-6 transition-transform duration-300 ${
+                          <ChevronDown className={`ml-2 w-5 h-5 transition-transform duration-300 ${
                             activeDropdown === item.name ? 'rotate-180' : ''
                           }`} />
                         </button>
-                        <div className={`mt-2 space-y-2 transition-all duration-300 w-full ${
-                          activeDropdown === item.name ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'
-                        }`}>
-                          {item.dropdown.map((dropdownItem, dropIndex) => (
-                            <Link
-                              key={dropdownItem.name}
-                              to={dropdownItem.href}
-                              className="block text-lg text-foreground hover:text-accent bg-secondary rounded-md px-4 py-3 transition-colors duration-300 border-2 border-border hover:border-accent"
-                              onClick={() => setIsMenuOpen(false)}
-                              style={{ animationDelay: `${(index + dropIndex) * 50}ms` }}
+                        <AnimatePresence>
+                          {activeDropdown === item.name && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              className="mt-2 space-y-2 overflow-hidden"
                             >
-                              {dropdownItem.name}
-                            </Link>
-                          ))}
-                        </div>
+                              {item.dropdown.map((dropdownItem) => (
+                                <Link
+                                  key={dropdownItem.name}
+                                  to={dropdownItem.href}
+                                  className="block text-base sm:text-lg text-foreground hover:text-accent bg-background rounded-xl px-4 py-3 transition-all duration-300 border border-border hover:border-accent/30"
+                                  onClick={() => setIsMenuOpen(false)}
+                                >
+                                  {dropdownItem.name}
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
                     ) : (
                       <Link
                         to={item.href}
-                        className={`block text-2xl font-bold rounded-lg px-4 py-3 transition-all duration-500 transform border-2 ${
+                        className={`block text-xl sm:text-2xl font-bold rounded-2xl px-6 py-4 transition-all duration-300 ${
                           isActive(item.href)
-                            ? 'text-accent scale-110 bg-accent/10 border-accent'
-                            : 'text-foreground hover:text-accent hover:scale-105 bg-secondary border-border'
+                            ? 'text-accent bg-accent/10 border-2 border-accent'
+                            : 'text-foreground hover:text-accent bg-secondary/50 border-2 border-border hover:border-accent/30'
                         }`}
-                        style={{ 
-                          animationDelay: `${index * 100}ms`,
-                          animation: isMenuOpen ? 'fadeInUp 0.6s ease-out forwards' : 'none'
-                        }}
                         onClick={() => setIsMenuOpen(false)}
                       >
                         {item.name}
                       </Link>
                     )}
-                  </div>
+                  </motion.div>
                 ))}
+                
                 {/* Mobile CTA */}
-                <Link
-                  to="/contact"
-                  className="btn-primary px-8 py-4 text-lg font-bold rounded-xl inline-flex items-center justify-center transform transition-all duration-300 hover:scale-105 mt-8 shadow-lg border-2 border-accent"
-                  onClick={() => setIsMenuOpen(false)}
-                  style={{ 
-                    animationDelay: `${navigation.length * 100}ms`,
-                    animation: isMenuOpen ? 'fadeInUp 0.6s ease-out forwards' : 'none'
-                  }}
+                <motion.div
+                  custom={navigation.length}
+                  variants={itemVariants}
+                  initial="closed"
+                  animate="open"
+                  className="pt-4"
                 >
-                  <Sparkles className="w-5 h-5 mr-2" />
-                  Get Started
-                </Link>
+                  <Link
+                    to="/contact"
+                    className="btn-primary px-8 py-4 text-lg font-bold rounded-2xl inline-flex items-center justify-center w-full shadow-lg shadow-primary/20"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <Sparkles className="w-5 h-5 mr-2" />
+                    Get Started
+                  </Link>
+                </motion.div>
               </nav>
             </div>
-          </div>
-        </div>
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
