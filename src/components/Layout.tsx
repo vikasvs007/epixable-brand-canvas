@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import Header from './Header';
 import Footer from './Footer';
 import PageTransition from './PageTransition';
+import ScrollToTop from './ScrollToTop';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -23,6 +24,7 @@ const Layout = ({ children }: LayoutProps) => {
         </AnimatePresence>
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };

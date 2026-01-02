@@ -115,27 +115,8 @@ const Header = () => {
             </motion.div>
             
             <div className="relative flex items-center">
-              <span className="flex items-center space-x-0.5 text-lg sm:text-2xl lg:text-3xl font-montserrat font-bold text-primary group-hover:text-accent transition-colors duration-300">
-                <span className="tracking-wide sm:tracking-wider hidden xs:inline">VERTE</span>
-                <span className="tracking-wide sm:tracking-wider xs:hidden">VX</span>
-                <span className="relative inline-block w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 align-middle mx-0.5 sm:mx-1 hidden xs:inline-block">
-                  <span className="absolute inset-0 flex items-center justify-center">
-                    <span className="block w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 bg-gradient-to-br from-primary to-accent rotate-45 rounded-sm group-hover:rotate-[225deg] transition-transform duration-500 shadow-lg"></span>
-                  </span>
-                  <span className="absolute inset-0 flex items-center justify-center">
-                    <span
-                      className="text-primary-foreground text-2xl sm:text-4xl lg:text-5xl font-playfair font-extrabold drop-shadow-lg group-hover:scale-110 transition-transform duration-300"
-                      style={{
-                        fontFamily: "'Playfair Display', serif",
-                        transform: 'rotate(-8deg) skewY(4deg)',
-                        letterSpacing: '-0.1em',
-                      }}
-                    >
-                      x
-                    </span>
-                  </span>
-                </span>
-                <span className="tracking-wide sm:tracking-wider hidden xs:inline">LABZ</span>
+              <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-montserrat font-bold text-primary group-hover:text-accent transition-colors duration-300 tracking-wide whitespace-nowrap">
+                VERTEX<span className="text-accent">LABZ</span>
               </span>
               
               {/* Animated underline */}
