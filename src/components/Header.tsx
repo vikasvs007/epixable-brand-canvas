@@ -115,8 +115,19 @@ const Header = () => {
             </motion.div>
             
             <div className="relative flex items-center">
-              <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-montserrat font-bold text-primary group-hover:text-accent transition-colors duration-300 tracking-wide whitespace-nowrap">
-                VERTEX<span className="text-accent">LABZ</span>
+              <span className="flex items-center text-lg sm:text-xl md:text-2xl lg:text-3xl font-montserrat font-bold text-primary group-hover:text-accent transition-colors duration-300 tracking-wide whitespace-nowrap">
+                <span>VERTE</span>
+                <span className="relative inline-flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 mx-0.5">
+                  {/* Diamond background */}
+                  <span className="absolute inset-0 flex items-center justify-center">
+                    <span className="block w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 bg-gradient-to-br from-primary via-accent to-primary rotate-45 rounded-sm group-hover:rotate-[225deg] transition-transform duration-500 shadow-lg shadow-accent/30"></span>
+                  </span>
+                  {/* X letter */}
+                  <span className="relative z-10 text-primary-foreground text-sm sm:text-base md:text-lg lg:text-xl font-black drop-shadow-md">
+                    X
+                  </span>
+                </span>
+                <span className="text-accent">LABZ</span>
               </span>
               
               {/* Animated underline */}
